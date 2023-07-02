@@ -7,11 +7,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory=r"D:/UIT/Năm 2/Kỳ 4/Tính toán đa phương tiện/Document similarity/static"), name="static")
+app.mount("/static", StaticFiles(directory=r"C:\Users\NHAN\OneDrive - Trường ĐH CNTT - University of Information Technology\UIT-Semester 4\05. Multimedia\DocSimi\static"), name="static")
 
 def bow_similarity(text1, text2):
     corpus = [text1, text2]
-    vectorizer = CountVectorizer(min_df=0, binary=True)
+    vectorizer = CountVectorizer()
     vectorized_corpus = vectorizer.fit_transform(corpus)
     similarity_matrix = cosine_similarity(vectorized_corpus)
     similarity = similarity_matrix[0, 1]
@@ -30,7 +30,7 @@ async def compare_texts_bow(doc1: str = Form(...), doc2: str = Form(...)) -> dic
 
 def tfidf_similarity(text1, text2):
     corpus = [text1, text2]
-    vectorizer = TfidfVectorizer(min_df=0)
+    vectorizer = TfidfVectorizer()
     vectorized_corpus = vectorizer.fit_transform(corpus)
     similarity_matrix = cosine_similarity(vectorized_corpus)
     similarity = similarity_matrix[0, 1]
