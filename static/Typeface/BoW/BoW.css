@@ -337,3 +337,7 @@ textarea{
     display:inline-block;
 }
 
+a.logo{
+    text-decoration: overline !important;
+
+}

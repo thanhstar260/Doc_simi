@@ -10,6 +10,12 @@ from sklearn.decomposition import TruncatedSVD
 app = FastAPI()
 app.mount("/static", StaticFiles(directory=r"D:/UIT/Năm 2/Kỳ 4/Tính toán đa phương tiện/Document similarity/static"), name="static")
 
+@app.get("/", response_class=HTMLResponse)
+async def index():
+        with open('static/main/main.html') as f:
+            content = f.read()
+        return content
+
 def bow_similarity(text1, text2):
     corpus = [text1, text2]
     vectorizer = CountVectorizer()
@@ -20,7 +26,7 @@ def bow_similarity(text1, text2):
 
 @app.get("/BOW", response_class=HTMLResponse)
 async def compare_form_bow():
-    with open('static/Typeface/BoW/BoW.html', 'r') as f:
+    with open('static/Typeface/BoW/BOW.html', 'r') as f:
         content = f.read()
     return content
 
@@ -31,7 +37,7 @@ async def compare_texts_bow(doc1: str = Form(...), doc2: str = Form(...)) -> dic
 
 def tfidf_similarity(text1, text2):
     # Khởi tạo corpus
-    with open("./TF_IDF/corpus.txt", "r") as file:
+    with open("TF_IDF/corpus.txt", "r") as file:
         lines = file.readlines()
 
     corpus = [line.strip() for line in lines]
@@ -64,7 +70,15 @@ async def compare_texts_tfidf(doc1: str = Form(...), doc2: str = Form(...)) -> d
     return {"similarity": round(similarity, 4)}
 
 def lsa_similarity(text1, text2):
-    corpus = [text1, text2]
+    # Khởi tạo corpus
+    with open("TF_IDF/corpus.txt", "r") as file:
+        lines = file.readlines()
+
+    corpus = [line.strip() for line in lines]
+
+    # Thêm hai văn bản đã xử lý vào tập dữ liệu corpus
+    corpus.append(text1)
+    corpus.append(text2)  
     vectorizer = TfidfVectorizer()
     vectorized_corpus = vectorizer.fit_transform(corpus)
 
@@ -75,6 +89,8 @@ def lsa_similarity(text1, text2):
     # Use cosine similarity on the LSA-transformed vectors
     similarity_matrix = cosine_similarity(lsa_corpus)
     similarity = similarity_matrix[0, 1]
+    corpus.pop()
+    corpus.pop()
     return similarity
 
 @app.get("/LSA", response_class=HTMLResponse)
