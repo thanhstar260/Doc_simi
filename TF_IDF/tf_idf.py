@@ -14,22 +14,28 @@ def cosine_similarity(vec1, vec2):
     return dot_product / (magnitude1 * magnitude2)
 
 def levenshtein_distance(str1, str2):
-    if len(str1) < len(str2):
-        return levenshtein_distance(str2, str1)
-    if len(str2) == 0:
-        return len(str1)
-    previous_row = range(len(str2) + 1)
-    for i, char1 in enumerate(str1):
-        current_row = [i + 1]
-        for j, char2 in enumerate(str2):
-            insertions = previous_row[j + 1] + 1
-            deletions = current_row[j] + 1
-            substitutions = previous_row[j] + (char1 != char2)
-            current_row.append(min(insertions, deletions, substitutions))
-        previous_row = current_row
-    return previous_row[-1]
+    m = len(str1)
+    n = len(str2)
 
-def jaccard_similarity(set1, set2):
+    d = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        d[i][0] = i
+    for j in range(n + 1):
+        d[0][j] = j
+
+    for j in range(1, n + 1):
+        for i in range(1, m + 1):
+            if str1[i - 1] == str2[j - 1]:
+                d[i][j] = d[i - 1][j - 1]
+            else:
+                d[i][j] = 1 + min(d[i][j - 1],      # Insert
+                                  d[i - 1][j],      # Delete
+                                  d[i - 1][j - 1])  # Replace
+    return d[m][n]
+
+def jaccard_similarity(text1,text2):
+    set1 = set(text1.split())
+    set2 = set(text2.split())
     intersection = len(set1.intersection(set2))
     union = len(set1.union(set2))
     return intersection / union if union != 0 else 0
@@ -59,7 +65,7 @@ def calculate_similarity(text1, text2):
     # Tính độ tương đồng bằng các phương pháp
     cosine_sim = cosine_similarity(vector1, vector2)
     levenshtein_dist = levenshtein_distance(text1, text2)
-    jaccard_sim = jaccard_similarity(set(text1.split()), set(text2.split()))
+    jaccard_sim = jaccard_similarity(text1,text2)
 
     return cosine_sim, levenshtein_dist, jaccard_sim
 
@@ -99,16 +105,26 @@ def find_most_similar_segment(text1, text2, measure, n_sentences):
     
     return max_similarity, most_similar_segment
 
+def create_corpus():
+    with open("corpus.txt", "r") as file:
+        # Read all lines from the file and store them in a list
+        lines = file.readlines()
+
+    # Strip any newline characters from each line
+    corpus = [line.strip() for line in lines]
+    return corpus
+
+
 # Sử dụng hàm calculate_similarity để tính độ tương đồng
-text1 = "love"
-text2 = "ass"
+text1 = "honda"
+text2 = "hyundai"
 
-# Đọc nội dung từ hai file text1.txt và text2.txt
-with open('text1.txt', 'r') as file:
-    text1 = file.read()
+# # Đọc nội dung từ hai file text1.txt và text2.txt
+# with open('text1.txt', 'r') as file:
+#     text1 = file.read()
 
-with open('text2.txt', 'r') as file:
-    text2 = file.read()
+# with open('text2.txt', 'r') as file:
+#     text2 = file.read()
 
 cosine_sim, levenshtein_dist, jaccard_sim = calculate_similarity(text1, text2)
 
@@ -116,9 +132,9 @@ print("Cosine Similarity:", cosine_sim)
 print("Levenshtein Distance:", levenshtein_dist)
 print("Jaccard Similarity:", jaccard_sim)
 
-similarity_measure = 'cosine'  # Chọn phương pháp đo độ tương đồng: 'cosine', 'levin', 'jaccard'
+similarity_measure = 'levin'  # Chọn phương pháp đo độ tương đồng: 'cosine', 'levin', 'jaccard'
 n_sentences = 1
 most_similar_segment = find_most_similar_segment(text1, text2, similarity_measure, n_sentences)
 
-print(f"Most similar segment (using {similarity_measure} similarity):")
+print(f"\nMost similar segment (using {similarity_measure} similarity):")
 print(most_similar_segment)

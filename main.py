@@ -30,12 +30,27 @@ async def compare_texts_bow(doc1: str = Form(...), doc2: str = Form(...)) -> dic
     return {"similarity": round(similarity, 4)}
 
 def tfidf_similarity(text1, text2):
-    corpus = [text1, text2]
+    # Khởi tạo corpus
+    with open("./TF_IDF/corpus.txt", "r") as file:
+        lines = file.readlines()
+
+    corpus = [line.strip() for line in lines]
+
+    # Thêm hai văn bản đã xử lý vào tập dữ liệu corpus
+    corpus.append(text1)
+    corpus.append(text2)
+
+    # Sử dụng TF-IDF Vectorizer để chuyển đổi văn bản thành ma trận TF-IDF
     vectorizer = TfidfVectorizer()
-    vectorized_corpus = vectorizer.fit_transform(corpus)
-    similarity_matrix = cosine_similarity(vectorized_corpus)
-    similarity = similarity_matrix[0, 1]
-    return similarity
+    tfidf_matrix = vectorizer.fit_transform(corpus)
+
+    # Tính độ tương đồng cosine giữa hai văn bản đã tiền xử lý
+    cosine_sim = cosine_similarity(tfidf_matrix[-2], tfidf_matrix[-1])[0][0]
+    
+    # Xóa hai văn bản đã thêm vào tập dữ liệu corpus
+    corpus.pop()
+    corpus.pop()
+    return cosine_sim
 
 @app.get("/TFIDF", response_class=HTMLResponse)
 async def compare_form_tfidf():
