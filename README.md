@@ -6,6 +6,6 @@ Cú pháp: git checkout -b <branch_name>
 
 Ví dụ:
 
-git checkout -b <Quan_Hoang>
+git checkout -b <Ngoc>
   
 Cách di chuyển qua nhiều branch: Bỏ b đi, git checkout <branch_name>
