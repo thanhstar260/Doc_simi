@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <form id="compare-form" class="compare-form" action="/compare" method="post" enctype="multipart/form-data">
+    <form id="compare-form" class="compare-form" action="/compare_bow" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <div class="input-doc1">
                 <div class="input-header">
@@ -111,7 +111,6 @@
         text-align: center;
     "></div> 
     
-
     </form>
     <script>
         document.getElementById('compare-form').addEventListener('submit', function(event) {
@@ -121,7 +120,7 @@
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
       
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/compare', true);
+          xhr.open('POST', '/compare_bow', true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       
           xhr.onreadystatechange = function() {

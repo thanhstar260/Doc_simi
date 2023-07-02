@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bag of Words</title>
-    <link rel="stylesheet" href="TF-IDF.css">
+    <title>TF-IDF</title>
+    <link rel="stylesheet" href="/static/Typeface/TF-IDF/TF-IDF.css">
 </head>
 <body>
 <!----------------------------------------------------------Header-------------------------------------------------------------->
     <header>
         <div class="logo">
             <div class="logo-img">
-                <img src="../../images/logo.svg" alt="logo image" />
+                <img src="/static/images/logo.svg" alt="logo image" />
             </div>
             <div class="logo-text">
                 <span class="primary-text">Doc</span>Simi
@@ -21,21 +21,20 @@
             <nav class="menu">
                 <ul class="clearfix">
                     <li class="item-1">
-                        <a href="#" class="link-item-1">Cosine Similarity<span class="arrow">&#9660;</span></a>
+                        <a href="#" class="link-item-1">Typeface Similarity<span class="arrow">&#9660;</span></a>
                         <ul class="sub-menu-1">
-                            <li><a href="http://127.0.0.1:5500/DocSimi_FE/Cosine/BoW/BoW.html">Bag of Word</a></li>
-                            <li><a href="http://127.0.0.1:5500/DocSimi_FE/Cosine/TF-IDF/TF-IDF.html">TF-IDF</a></li>
-                            <li><a href="http://127.0.0.1:5500/DocSimi_FE/Cosine/Word2Vec/Word2Vec.html">Word2Vec</a></li>
+                            <li><a href="/static/Cosine/BoW/BoW.html">Bag of Word</a></li>
+                            <li><a href="/static/Cosine/TF-IDF/TF-IDF.html">TF-IDF</a></li>
+                            <li><a href="/static/Cosine/Word2Vec/Word2Vec.html">Graph Edit Distance</a></li>
+                            <li><a href="/static/Cosine/Word2Vec/Word2Vec.html">Jaccard</a></li>
                         </ul>
                     </li>
                     <li class="item-2">
-                        <a href="#" class="link-item-2">Levenshtein Distance<span class="arrow">&#9660;</span></a>
+                        <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
                         <ul class="sub-menu-2">
-                            <li><a href="#">None</a></li>
-                            <li><a href="http://127.0.0.1:5500/DocSimi_FE/Levenshtein/GED/GED.html">Graph Edit Distance</a></li>
+                            <li><a href="/static/Levenshtein/GED/GED.html">Doc2Vec</a></li>
                         </ul>
                     </li>
-                    <li class="item-3"><a href="#" class="link-item-3">Jaccard Similarity</a></li>
                 </ul>
             </nav>
         </div>
@@ -46,10 +45,10 @@
         <div class="banner">
             <div class="algo-banner">
                 <div class="algo-img">
-                    <img src="../../images/BoW.png" alt="BoW-image" />
+                    <img src="/static/images/tfidf.jpg" alt="TF-IDF-image" />
                 </div>
                 <div class="algo-text">
-                    <h2>Term Frequency-Inverse Document Frequency</h2>
+                    <h2>Term Frequency-Inverse Document Frequency (TF-IDF)</h2>
                     <p>
                         <span>
                             A numerical statistic used in information retrieval and text mining to measure the importance of a term within a document or a collection of documents. 
@@ -71,47 +70,72 @@
         </div>
     </div>
 
-    <form class="compare-form">
+    <form id="compare-form" class="compare-form" action="/compare_tfidf" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <div class="input-doc1">
                 <div class="input-header">
-                    <input type="file" id="document1-text" accept class="input-file">
-                    <div class="hide-print">
-                        <label title="Document 1" for="document1-text" class="input-file-label">
-                            <span>Document 1</span>
-                            <img src="../../images/add_folder.svg" alt="Document 1" />
-                        </label>  
-                    </div>
+                    <label title="Document 1" for="document1-text" class="input-file-label">
+                        <span>Document 1</span>
+                    </label>  
                 </div>
-
-                <div class="input-content" >
-                    <textarea class="input-text" ></textarea>
+                <div class="input-content">
+                    <textarea class="input-text" name="doc1"></textarea>
                 </div>
             </div>
 
             <div class="input-doc2">
                 <div class="input-header">
-                    <input type="file" id="document2-text" accept class="input-file">
-                    <div class="hide-print">
-                        <label title="Document 2" for="document2-text" class="input-file-label">
-                            Document 2
-                            <img src="../../images/add_folder.svg" alt="Document 2" />
-                        </label>  
-                    </div>
+                    <label title="Document 2" for="document2-text" class="input-file-label">
+                        Document 2
+                    </label>  
                 </div>
-
-                <div class="input-content" >
-                    <textarea class="input-text" ></textarea>
+                <div class="input-content">
+                    <textarea class="input-text" name="doc2"></textarea>
                 </div>
             </div>    
         </div>
-
             
         <div class="submit-button">
             <button type="submit" name="Compare" class="submit-btn">
                 Compare
             </button>
         </div>
+        <div id="similarity-result" style="
+        margin-top: 20px;
+        font-size: 20px;
+        color: #333;
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.1); 
+        background-color: #f8f9fa; 
+        text-align: center;
+    "></div> 
+    
     </form>
+    <script>
+        document.getElementById('compare-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+      
+          var doc1 = document.querySelector('textarea[name="doc1"]').value;
+          var doc2 = document.querySelector('textarea[name="doc2"]').value;
+      
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/compare_tfidf', true);
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      
+          xhr.onreadystatechange = function() {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+              var similarity = JSON.parse(this.responseText).similarity;
+              // Update the similarity result text on the page
+              document.getElementById('similarity-result').innerText = 'Similarity: ' + similarity.toFixed(4);
+              document.getElementById('similarity-result').style.display = 'block'; 
+            }
+          };
+      
+          var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2);
+          xhr.send(data);
+        });
+      </script>
+      
 </body>
 </html>
