@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bag of Words</title>
-    <link rel="stylesheet" href="/static/Typeface/BoW/BoW.css">
+    <title>Latent Semantic Analysis</title>
+    <link rel="stylesheet" href="/static/Semantic/LSA/LSA.css">
 </head>
 <body>
 <!----------------------------------------------------------Header-------------------------------------------------------------->
@@ -45,14 +45,13 @@
         <div class="banner">
             <div class="algo-banner">
                 <div class="algo-img">
-                    <img src="/static/images/BoW.png" alt="BoW-image" />
+                    <img src="/static/images/LSA.png" alt="LSA-image" />
                 </div>
                 <div class="algo-text">
-                    <h2>Bag of Words</h2>
+                    <h2>Latent Semantic Analysis</h2>
                     <p>
                         <span>
-                            An algorithm that transforms the text into fixed-length vectors. 
-                            This is possible by counting the number of times the word is present in a document.
+                            A technique in natural language processing, in particular in vectorial semantics, of analyzing relationships between a set of documents and the terms they contain by producing a set of concepts related to the documents and terms.
                         </span>
                     </p>
                 </div>
@@ -70,7 +69,7 @@
         </div>
     </div>
 
-    <form id="compare-form" class="compare-form" action="/compare_bow" method="post" enctype="multipart/form-data">
+    <form id="compare-form" class="compare-form" action="/compare_lsa" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <div class="input-doc1">
                 <div class="input-header">
@@ -120,7 +119,7 @@
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
       
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/compare_bow', true);
+          xhr.open('POST', '/compare_lsa', true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       
           xhr.onreadystatechange = function() {
