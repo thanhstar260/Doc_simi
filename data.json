@@ -1,0 +1,307 @@
+{
+    "data": [
+        {
+            "_id": "64926e4108ad32a65a1b8b18",
+            "name": "Hoi An",
+            "address": "Viet Nam",
+            "image": "https://vcdn1-dulich.vnecdn.net/2022/06/01/Hoi-An-VnExpress-5851-16488048-4863-2250-1654057244.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=Z2ea_f0O7kgGZllKmJF92g",
+            "description": "Located on the north bank of the lower Thu Bon River, Hoi An is an ancient town in Quang Nam, more than 30 km from Da Nang city, 122 km from Hue. Referring to Hoi An, it is necessary to mention the rows of ancient saffron-colored houses, the sparkling river with lanterns at night, or delicious dishes at affordable prices."
+        },
+        {
+            "_id": "6492b21346beb6d6c222e572",
+            "name": "Ha Long",
+            "address": "Viet Nam",
+            "image": "https://golden-lotus-hotel.s3.ap-southeast-1.amazonaws.com/uploads/2021/04/013d407166ec4fa56eb1e1f8cbe183b9/images1089892_1.jpg",
+            "description": "Ha Long is the central city of Quang Ninh province, located in the northeast of Viet Nam. To the south of the city, it borders Ha Long Bay, with a 50km-long bay road, in addition, it also borders Cat Hai district and Hai Phong city. Ha Long borders Bac Giang province to the North, Cam Pha city to the East and Uong Bi city and Quang Yen town to the West."
+        },
+        {
+            "_id": "6492d6e4f6046dbd53fc3364",
+            "name": "Ha Noi",
+            "address": "Viet Nam",
+            "image": "https://cdn3.ivivu.com/2022/07/h%E1%BB%93-g%C6%B0%C6%A1m-du-l%E1%BB%8Bch-H%C3%A0-N%E1%BB%99i-ivivu.jpg",
+            "description": "Hanoi is located on the left bank of the Da River and on both sides of the Red River Delta. It borders Vinh Phuc and Thai Nguyen provinces to the north, Hoa Binh province to the south, Bac Ninh and Hung Yen provinces to the east, and Vinh Phuc province to the west. After being expanded, Hanoi is in the top 17 capitals with the largest area in the world with 3,324.92 square kilometers. With this favorable geographical position, this city easily becomes an important economic - political, cultural and scientific center of the country. Currently, it includes 12 districts, 1 town and 17 districts.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e220f6046dbd53fc3365",
+            "name": "Phong Nha Ke Bang",
+            "address": "Viet Nam",
+            "image": "https://www.Viet Nambooking.com/wp-content/uploads/2022/10/dong-phong-nha-o-quang-binh-2.jpg",
+            "description": "Phong Nha Cave is a stalactite cave in Qua Phong Nha - Ke Bang garden, in the territory of Quang Binh province. Phong Nha cave is located in Son Trach commune, Bo Trach district, near Ho Chi Minh road in Quang Binh province. This is a stalactite cave, limestone mountain formed about 2 million years ago. Thanks to the long-term weathering, rainwater and other effects of nature, the limestone in the cave has flowed down to form a beautiful scene. Dubbed 'Thien Nam First Cave' not only because of the unique shapes and beautiful colors of stalactites in the cave, but also because it owns the largest area in the cave complex here. This cave is considered the highlight of Phong Nha Ke Bang.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e2cef6046dbd53fc3366",
+            "name": "Vinpearl Land Nha Trang",
+            "address": "Viet Nam",
+            "image": "https://static.vinwonders.com/2022/04/kinh-nghiem-di-vinpearl-nha-trang-1-1.jpg",
+            "description": "VinWonders or Hon Ngoc Viet Resort or Vinpearl Land is a luxury resort located on Hon Tre Island, Vinh Nguyen Ward, Nha Trang City, Khanh Hoa Province. The managing unit is Vinpearl Joint Stock Company established in 2001, listed on HOSE since 2008 and is a member of Vingroup.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e345f6046dbd53fc3367",
+            "name": "Dao Phu Quoc",
+            "address": "Viet Nam",
+            "image": "https://static.vinwonders.com/2022/04/du-lich-phu-quoc-thang-10-.jpg",
+            "description": "Phu Quoc Island - a tropical paradise located in the Gulf of Thailand, is the largest island of Viet Nam located in the southwest, also the largest island in a population of 22 different small and large islands here. Phu Quoc together with other islands form Phu Quoc island district in Kien Giang province.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e391f6046dbd53fc3368",
+            "name": "Ca Mau",
+            "address": "Viet Nam",
+            "image": "https://media.loveitopcdn.com/3426/141329-1.jpg",
+            "description": "Ca Mau is known as the end of the country and is always a must-visit Western tourist destination once in the life of every Viet Namese. The last province of the Viet Namese Fatherland with three sides mainly bordering the sea, coming here visitors will visit the national coordinate landmark, watch the forest, the sea, admire the sunset in the vast sky and sea. Ca Mau exudes a poetic and lyrical, peaceful and rustic beauty that captivates the hearts of visitors.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e430f6046dbd53fc3369",
+            "name": "Sa Pa",
+            "address": "Viet Nam",
+            "image": "https://datviettour.com.vn/uploads/images/tin-tuc-SEO/mien-bac/sa-pa/du-lich-sapa-tet-nguyen-dan-2023.jpg",
+            "description": "Sapa is a highland district of Lao Cai province, 38km from Lao Cai city, in the northwestern mountainous region of Viet Nam. The total area of ​​Sapa is about 678.6km2, with the terrain mostly hilly. This is currently the main residence of the Mong, Dao, Tay, Giay, Xa Pho, Kinh and Hoa ethnic groups.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e5e9f6046dbd53fc336a",
+            "name": "Hoang Thanh Hue",
+            "address": "Viet Nam",
+            "image": "https://khamphahue.com.vn/Portals/0/Media/T7/upload/VHDL/VanHoa/TinTucVanHoa/2017/T4/DaiNoiVeDem/KPH_Dai-noi-mo-cua-ve-dem_015.jpg",
+            "description": "The Imperial Citadel of Hue or Thuan Hoa Imperial Citadel, also known as the Citadel, is the second citadel inside the Hue Citadel, with the function of protecting the most important palaces of the court, the shrines of the ancestors of the Nguyen and protect the Forbidden City - a place reserved for kings and royalty.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e70df6046dbd53fc336b",
+            "name": "Ba Na Hills",
+            "address": "Viet Nam",
+            "image": "https://divui.com/blog/wp-content/uploads/2018/02/can-canh-ba-na-hill-chon-bong-lai-tien-canh-o-ha-gioi-1.jpg",
+            "description": "Located 46km from Da Nang city center, Ba Na is an ideal resort on the top of Chua mountain in Hoa Vang district. Ba Na Mountain is considered as a precious pearl of Da Nang land, a precious gift that mother nature bestowed. With an altitude of 1487m above sea level, Ba Na peak is a place with fresh and airy air. This place is likened to a miniature Da Lat of the sunny and windy Central region because Ba Na will also give visitors the full experience of 4 seasons in just one day, but absolutely not as steamy as Da Lat.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e77bf6046dbd53fc336c",
+            "name": "Thung lung tinh yeu",
+            "address": "Viet Nam",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/c/c7/TLTY2.jpg",
+            "description": "Dalat Love Valley is one of the most famous landmarks in the misty land of Da Lat. When it comes to Da Lat, you will immediately think of a poetic place. Romantic like Korean movies. There is a valley known as the land of love. Where love originates for the most beautiful and sacred love stories.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e7fcf6046dbd53fc336d",
+            "name": "Sunworld Asia Park",
+            "address": "Viet Nam",
+            "image": "https://asiapark.sunworld.vn/wp-content/uploads/2018/10/DJI_0034.jpg",
+            "description": "Asia Park Danang Asia Park is one of the most famous entertainment and entertainment places in Da Nang. With a convenient location in the city center, the park always attracts many visitors to visit and have fun, especially on weekends and holidays, Tet. On the first day of opening, Asia Park made an impression. with the Sun Wheel project - one of the tallest wheels in the world recognized by the Guinness World Records. At the height of 115m of Sun Wheel, you have the opportunity to admire Da Nang in a wider, more spacious way.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492e861f6046dbd53fc336e",
+            "name": "Nui Than Dinh",
+            "address": "Viet Nam",
+            "image": "https://static.kinhtedothi.vn/w960/images/upload/2023/01/27/nui-than-dinh-1.jpeg",
+            "description": "About 25km from the center of Dong Hoi city, Than Dinh mountain is located next to the Long Dai river in the territory of Rao Da village, Truong Xuan commune, Quang Ninh district, Quang Binh province. Local people here often call this mountain with many different names such as Chua Non mountain or Bat Nghia mountain.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492f2c4f6046dbd53fc336f",
+            "name": "Suoi Khoang Than Tai",
+            "address": "Viet Nam",
+            "image": "https://nuithantai.vn/Content/UserFiles/Images/TypeProduct/khampha.jpg",
+            "description": "Than Tai Mountain Tourist Area, also known as Nui Than Tai Hot Spring Park, is located in Ba Na Nui Chua Nature Reserve, on the territory of Hoa Phu Commune, Hoa Vang District, Da Nang. It is about 30 km southwest of the city center. Although not comparable to Ba Na Hills, this is also one of the famous destinations of Da Nang tourism that is extremely attractive to tourists.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492f6d2f6046dbd53fc3370",
+            "name": "Suoi Tien",
+            "address": "Viet Nam",
+            "image": "https://lotusmiles.com/wp-content/uploads/2021/09/bien-tien-dong.jpg",
+            "description": "Suoi Tien tourist area in Ho Chi Minh City is an amusement park combining traditional cultural - historical - spiritual elements in District 9, Thu Duc city. Architectural styles and entertainment genres are interwoven with images of Viet Namese historical and legendary figures such as Lac Long Quan - Au Co, King Hung, Son Tinh Thuy Tinh, eighteen floors of hell, and four spirits. Convergence Long - Lan - Quy - Phung general corresponds to the five elements Kim - Wood - Water - Fire - Earth.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492f77af6046dbd53fc3371",
+            "name": "Cong vien Merlion",
+            "address": "Singapore",
+            "image": "https://luhanhViet Nam.com.vn/du-lich/vnt_upload/news/07_2020/cong-vien-merlion-3.jpg",
+            "description": "Merlion Park is located right next to Marina Bay, close to the CBD, one of the busiest and busiest tourist destinations in Singapore. It covers an area of ​​about 2500 square meters and is a beautiful scenic spot next to the river. The stone steps at Merlion can seat about 300 people at once.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492f7d8f6046dbd53fc3372",
+            "name": "Marina Bay Sand",
+            "address": "Singapore",
+            "image": "https://ik.imagekit.io/tvlk/blog/2022/08/du-lich-marina-bay-sand-1.jpg",
+            "description": "Marina Bay Sand is famous as the most expensive and modern business and resort complex in the world. With its location in the south on Singapore's Marina Bay, it has a casino, a commercial center, a hat house, an exhibition, and a modern hotel. This project consists of 3 buildings with 55 floors, with 2,590 rooms, exhibitions and seminars with 120,000m2. 15,000 square meter casino, 300 shops from the most famous brands today.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fc17f6046dbd53fc3373",
+            "name": "Lucerne",
+            "address": "Switzerland",
+            "image": "https://eutrip.vn/view/admin/Themes/kcfinder/upload/images/dia-diem-du-lich-thuy-si.jpg",
+            "description": "Lucerne, a compact city in Switzerland known for its preserved medieval architecture, sits amid snowcapped mountains on Lake Lucerne. Its colorful Altstadt (Old Town) is bordered on the north by 870m Museggmauer (Musegg Wall), a 14-century rampart. The covered Kapellbrücke (Chapel Bridge), built in 1333, links the Aldstadt to the Reuss River's right bank.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fc81f6046dbd53fc3374",
+            "name": "Zurich",
+            "address": "Switzerland",
+            "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/02/27/15/zurich-view.jpg",
+            "description": "The largest city in Switzerland, Zurich is a major contemporary art and shopping destination. Important artworks are displayed in the Kunsthaus and the Rietberg Museum, while those who consider shopping an art can hone their skills along Bahnhofstrasse and Niederdorf. Chagall's stained glass windows in the Fraumunster amaze, and Zurich's 500 clubs and bars—including several in swimming pools—pulse with life 'til the early hours. This city on Lake Zurich has excellent public transit and a free bike rental system.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fcf2f6046dbd53fc3375",
+            "name": "Matterhorn mountain",
+            "address": "Switzerland",
+            "image": "https://eutrip.vn/view/admin/Themes/kcfinder/upload/images/dia-diem-du-lich-thuy-si-8%20%282%29.jpg",
+            "description": "The Matterhorn is located on the Swiss-Italian border. This Swiss tourist destination is not the highest mountain in the Alps, but this mountain has a beautiful view that is rare elsewhere. The first is because the mountain has a rather peculiar shape. From a distance, the mountain appears like a pyramid created from the hands of nature with four triangular faces converging at the top. It is also a strange attraction with the edges of the mountain seemingly cut with a giant knife of nature. Another special feature is that the four sides of the Matterhorn peak as if they were the four East-Western-Northern directions of a giant compass.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fd37f6046dbd53fc3376",
+            "name": "Geneva",
+            "address": "Switzerland",
+            "image": "https://eutrip.vn/view/admin/Themes/kcfinder/upload/images/dia-diem-du-lich-thuy-si-15.jpg",
+            "description": "Geneva is a city in Switzerland that lies at the southern tip of expansive Lac Léman (Lake Geneva). Surrounded by the Alps and Jura mountains, the city has views of dramatic Mont Blanc. Headquarters of Europe’s United Nations and the Red Cross, it’s a global hub for diplomacy and banking.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fde7f6046dbd53fc3377",
+            "name": "Rhaetian Railway in the Albula / Bernina Landscapes",
+            "address": "Switzerland",
+            "image": "https://eutrip.vn/view/admin/Themes/kcfinder/upload/images/dia-diem-du-lich-thuy-si-10.png",
+            "description": "It is one of the most spectacular ways to cross the Alps and one of the most beautiful railways in the world. From Chur, Landquart, Sois, St Moritz in Switzerland to Tirano in Italy, the Bernina Railway moves gently through splendid spiral tunnels and over viaducts as it climbs the Albula valley. The red train - not a racing train, has climbed over 1000 meters thanks to the surprising Ladwasser viaduct with 55 tunnels, 196 bridges.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fe4ff6046dbd53fc3378",
+            "name": "Chillon castle",
+            "address": "Switzerland",
+            "image": "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/7b/c2.jpg",
+            "description": "Chillon Castle is a medieval fortress celebrated for its beauty and is widely regarded as one of the best-preserved medieval castles in Europe. Situated in Canton Vaud, Switzerland and only 3 km (2 miles) from the modern city of Montreux, Chillon Castle sits on a rock along the banks of Lake Geneva. From the 12th-16th centuries CE, Chillon Castle belonged to the powerful Counts of Savoy who became wealthy as a result of the taxes they imposed on merchants traveling through the area from the Great St. Bernard Pass or on sailing vessels operating on Lake Geneva.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492fedef6046dbd53fc3379",
+            "name": "Niagara falls",
+            "address": "United States of America",
+            "image": "https://cdn.britannica.com/30/94430-050-D0FC51CD/Niagara-Falls.jpg",
+            "description": "Niagara Falls is a group of three waterfalls at the southern end of Niagara Gorge, spanning the border between the province of Ontario in Canada and the state of New York in the United States. The largest of the three is Horseshoe Falls, which straddles the international border of the two countries.[1] It is also known as the Canadian Falls.[2] The smaller American Falls and Bridal Veil Falls lie within the United States. Bridal Veil Falls is separated from Horseshoe Falls by Goat Island and from American Falls by Luna Island, with both islands located in New York.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492ff3af6046dbd53fc337a",
+            "name": "Statue of Liberty",
+            "address": "United States of America",
+            "image": "https://vietmytourist.com/wp-content/uploads/2017/07/13-su-that-it-ai-biet-ve-tuong-nu-than-tu-do-01.jpg",
+            "description": "The Statue of Liberty is a neoclassical bronze sculpture located on Liberty Island in New York Harbor. The work was designed by French architect, Frédéric Auguste Bartholdi. The metal frame was made by Gustave Eiffel and inaugurated on October 28, 1886. The statue has the shape of a woman wearing a robe, holding a torch in her right hand and a slate plate engraved with the date of American independence in the other.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6492ffd8f6046dbd53fc337b",
+            "name": "Walt Disney World Resort",
+            "address": "United States of America",
+            "image": "https://dulichmy.net.vn/wp-content/uploads/2022/05/walt-disney-world.jpg",
+            "description": "At nearly 47 square miles, Walt Disney World Resort features four theme parks: Epcot Park, Magic Kingdom Park, Disney's Animal Kingdom Park and Disney's Hollywood Studios Park, two water parks: Blizzard Beach Disney and Typhoon Lagoon Disney and more than 20 resort hotels. With interactive thrills, animal world tours, mystical attractions, dining, shopping and nearly 60,000 masquerade actors performing in more than 3,000 different roles, visitors are sure to Feel the magic of Disney in each and every visit.",
+            "type": "Hot places"
+        },
+        {
+            "_id": "6493010df6046dbd53fc337c",
+            "name": "Noma restaurant",
+            "address": "Denmark",
+            "image": "https://www.elledecoration.vn/wp-content/uploads/2018/10/NOMA-8.jpg",
+            "description": "Noma is a three-Michelin-star restaurant run by chef René Redzepi, and co-founded by Claus Meyer, in Copenhagen, Denmark. The name is a syllabic abbreviation of the two Danish words 'nordisk' (Nordic) and 'mad' (food). Opened in 2003, the restaurant is known for its focus on foraging, invention and interpretation of New Nordic Cuisine. In 2010, 2011, 2012, and 2014, it was ranked as the Best Restaurant in the World by Restaurant magazine. In 2021 it won the first spot in the World's 50 Best Restaurants Awards",
+            "type": "Featured Experience"
+        },
+        {
+            "_id": "64930188f6046dbd53fc337d",
+            "name": "Geranium restaurant",
+            "address": "Denmark",
+            "image": "https://media.vneconomy.vn/images/upload/2022/08/12/nha-hang1.png",
+            "description": "Named after the sweet, beautiful geranium of the Mediterranean region, Geranium can't help but surprise diners from the location located on the 8th floor of a stadium to the dishes that are 'unique, strange, quality' with a New Nordic style, which preserves the original flavor of nature along with superior processing techniques applying high technology of chef and co-founder of the brand Rasmus Kofoed.",
+            "type": "Featured Experience"
+        },
+        {
+            "_id": "64930513f6046dbd53fc337e",
+            "name": "Disfrutar restaurant",
+            "address": "Spain",
+            "image": "https://www.numeromag.nl/wp-content/uploads/2021/05/screen_shot_2021-05-25_at_11.54.12.jpg",
+            "description": "Disfrutar Barcelona is undoubtedly one of the most innovative restaurants in the world. Two Michelin stars prove it, but this place offers more than just delicious meals. Billed as a departure from elBulli (a 3-Michelin-starred restaurant considered by many to be the best in the world), former chefs Mateu Casañas, Oriol Castro and Eduard Xatruch have preserved the memory of elBulli by continuing to try it out. different flavor combinations and textures that few others would dare. Their culinary imagination knows no bounds, and these ideas manifest in every dish at Disfrutar.",
+            "type": "Featured Experience"
+        },
+        {
+            "_id": "64939bb2119b071b37ff4809",
+            "name": "Lang Chu Tich Ho Chi Minh",
+            "address": "Viet Nam",
+            "image": "https://res.klook.com/image/upload/q_85/c_fill,w_650,h_345/v1629790845/blog/knwwqkrye3d9apdilnjz.jpg",
+            "description": "Ho Chi Minh Mausoleum, also known as Ho Chi Minh Mausoleum or Uncle Ho's Mausoleum, is the place to preserve the remains of President Ho Chi Minh. The mausoleum was officially started on September 2, 1973, at the location of the old platform in the middle of Ba Dinh Square, where Ho Chi Minh used to chair important meetings. The mausoleum was inaugurated on August 29, 1975, consisting of 3 layers with a height of 21.6 meters, a width of 41.2 meters, the lower layer is shaped like a three-step staircase, the middle layer is the central structure of the mausoleum including the examination room. comedy and the corridors, the stairs. The outside of the mausoleum is clad in gray granite, and the inside is made of polished gray and red stone. Around the four sides are rows of square columns of granite, the top layer is the roof of a triangular mausoleum. On the main side, there is the inscription: 'PRESIDENT HO-CHI-MINH' in plum-colored pink stone. Around the mausoleum are gardens where more than 250 species of plants are grown from all over Viet Nam.",
+            "type": "For you"
+        },
+        {
+            "_id": "64939c21119b071b37ff480a",
+            "name": "Thap Rua",
+            "address": "Viet Nam",
+            "image": "https://cdn3.ivivu.com/2022/09/h%E1%BB%93-G%C6%B0%C6%A1m-ivivu-2.jpg",
+            "description": "Turtle Tower is a small tower built on a mound in the heart of Hoan Kiem Lake, located on Hang Trong Street, Hoan Kiem District, Hanoi. With the architecture built during the French colonial period, Turtle Tower has bold French architecture combined with Viet Namese architecture. Although influenced by French style, it still retains the Viet Namese-style curved roof with 4 curved blades boldly imbued with ancient oriental culture.",
+            "type": "For you"
+        },
+        {
+            "_id": "64939cd1119b071b37ff480b",
+            "name": "Pho di bo Ho Guom",
+            "address": "Viet Nam",
+            "image": "https://nemtv.vn/wp-content/uploads/2019/03/pho-di-bo-ho-guom-nemtv-1.jpg",
+            "description": "The interesting thing about the pedestrian street in Hanoi is that although there are no games or modern technology services, it is attractive and attracted by the games with traditional beauty, the games imbued with originality. Viet Namese national identity and cultural spirit. Every section on the pedestrian street, we will see a group of people playing boxing or tug of war, playing volleyball or kickball... many community activities taking place here have attracted and attracted attention. Many young people joined in.",
+            "type": "For you"
+        },
+        {
+            "_id": "64939dbb119b071b37ff480c",
+            "name": "Van mieu Quoc Tu Giam",
+            "address": "Viet Nam",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/3/39/Hanoi_Temple_of_Literature_%28cropped%29.jpg",
+            "description": "Quoc Tu Giam Thang Long was established in 1076, under King Ly Nhan Tong. During the Ly, Tran and Later Le dynasties, Quoc Tu Giam became the largest educational center of the country. Quoc Tu Giam's educational goal is to train and train talents for the country. Therefore, the teaching and learning here is very organized. The court set rules for the students (students) of Quoc Tu Giam.",
+            "type": "For you"
+        },
+        {
+            "_id": "64939e3a119b071b37ff480d",
+            "name": "Chua Tran Quoc",
+            "address": "Viet Nam",
+            "image": "https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/12/chua-tran-quoc.jpg",
+            "description": "Tran Quoc Pagoda is an ancient temple in Viet Nam located at 46 Thanh Nien, Yen Phu ward, Tay Ho district, with an age of up to 1500 years. The pagoda is located on a mound, looks like a small island from afar. Surrounding the pagoda is blue water, like a charming painting. During the Ly - Le dynasties, Tran Quoc Pagod was the Buddhist center of the Thang Long citadel. In 2021, this temple is honored to be in the TOP 16 most beautiful temples in the world voted by the British Daily Mail. In particular, this place is also known as one of the most sacred temples in Hanoi.",
+            "type": "For you"
+        },
+        {
+            "_id": "64939e80119b071b37ff480e",
+            "name": "Sen restaurant",
+            "address": "Viet Nam",
+            "image": "https://cdn.jamja.vn/blog/wp-content/uploads/2017/06/nha-hang-SEN-2.jpg",
+            "description": "Sen restaurant system is one of the first buffet restaurant chains to appear in Viet Nam. After a long time of learning, experiencing, and refering to buffet models around the world, Sen restaurant was officially put into operation in 2004. After being introduced to the public, Sen restaurant has attracted attention. attracted a large number of diners with delicious, diverse and luxurious dishes.",
+            "type": "Featured Experience"
+        },
+        {
+            "_id": "64939ecd119b071b37ff480f",
+            "name": "Lao Ngu Cha Ca restaurant",
+            "address": "Viet Nam",
+            "image": "https://cdn.jamja.vn/blog/wp-content/uploads/2017/06/lao-ngu-cha-ca-2-1-768x508.jpg",
+            "description": "Located on the vibrant and bustling street of Thai Ha, Lao Ngu Cha Ca quietly lies in a corner, somewhat humble. But once you come here and taste the excellent dishes of the restaurant, adding a little additional weather element, will definitely bring you an unforgettable warm feeling.",
+            "type": "Featured Experience"
+        },
+        {
+            "_id": "64939f22119b071b37ff4810",
+            "name": "Vinhomes Times City",
+            "address": "Viet Nam",
+            "image": "https://vinhomesland.vn/wp-content/uploads/2019/05/vinhomes-times-city.jpg",
+            "description": "Times City is considered a miniature modern city, including many luxurious and high-class functional subdivisions. From luxury apartments, adjacent villas, parks, schools, hospitals, squares to commercial centers, amusement parks, ... all converge here. It is because of these things that Times City is named as one of the leading entertainment centers in the capital.",
+            "type": "For you"
+        },
+        {
+            "_id": "64939fea119b071b37ff4811",
+            "name": "Lofita Tea & Coffee",
+            "address": "Viet Nam",
+            "image": "https://triptrip.info/wp-content/uploads/2021/08/Lofita-Tea-Coffee-3.png",
+            "description": "One of the most beautiful rooftop cafes in Hanoi. Each Lofita branch is combined with indoor and outdoor space with many separate decor. From the poetic and elegant concept, as cozy as the old Hanoi afternoon teas. Until the modern Korean style, the classic royal style with a bit of tropical ... All are carefully invested in decoration, separate from each other. Not only that, the shop changes its decor every 2-3 weeks. So every time you come to Lofita, you discover 'new land' every time.",
+            "type": "Featured Experience"
+        }
+    ],
+    "message": "Get all places successfully"
+}
