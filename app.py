@@ -10,6 +10,8 @@ from sklearn.decomposition import TruncatedSVD
 from gensim.models import KeyedVectors
 import spacy
 import numpy as np
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import Normalizer
 
 nlp = spacy.load('en_core_web_sm')
 app = FastAPI()
@@ -69,14 +71,14 @@ def lsa_similarity(text1, text2):
         lines = file.readlines()
     corpus = [line.strip() for line in lines]
     corpus.append(text1)
-    corpus.append(text2)  
+    corpus.append(text2)
     vectorizer = TfidfVectorizer(stop_words='english', smooth_idf=True)
-    vectorized_corpus = vectorizer.fit_transform(corpus)
-    lsa = TruncatedSVD(n_components=200)  
-    lsa_corpus = lsa.fit_transform(vectorized_corpus)
-    similarity_matrix = cosine_similarity(lsa_corpus)
-    similarity = similarity_matrix[-1, -2]  
-    return similarity
+    tfidf = vectorizer.fit_transform(corpus)
+    svd = TruncatedSVD(70)
+    lsa = make_pipeline(svd, Normalizer(copy=False, norm='l2'))
+    tfidf_lsa = lsa.fit_transform(tfidf)
+    similarity = cosine_similarity(tfidf_lsa[-2].reshape(1, -1), tfidf_lsa[-1].reshape(1, -1))
+    return abs(similarity[0][0])
 
 @app.get("/LSA", response_class=HTMLResponse)
 async def compare_form_lsa():
