@@ -164,6 +164,8 @@ textarea{
     justify-content:center;
 }
 
+
+
 .submit-btn{
     padding: 15px 20px;
     border:none;
@@ -178,7 +180,6 @@ textarea{
     cursor:pointer;
     box-shadow: 0px 0px 7px #C4CFD4;
 }
-
 
 /*----- Phần menu -----*/
 .menu li {
@@ -204,7 +205,7 @@ textarea{
 } 
 
 .menu > ul > li {
-    float: left;
+    /* float: left; */
     display:inline-block;
     position:relative;
     font-size:17px;
@@ -334,4 +335,8 @@ textarea{
     padding: 10px 20px;
     color:#1001DE;
     display:inline-block;
+}
+
+a.logo{
+    text-decoration: none !important;
 }

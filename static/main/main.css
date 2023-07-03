@@ -50,9 +50,9 @@ h1{
 } 
 
 .menu > ul > li {
-    /* float: left; */
-    display:inline-block;
     position:relative;
+    float: left;
+    display:inline-block;
     font-size:17px;
 }
 
@@ -198,8 +198,8 @@ h1{
 }
 
 .body-container-img1{
+    position: relative;
     margin-top: 80px;
-    float: right;
 }
 
 .body-container-img1 img{

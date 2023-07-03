@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TF-IDF</title>
-    <link rel="stylesheet" href="/static/Typeface/TF-IDF/TF-IDF.css">
+    <title>Word2Vec</title>
+    <link rel="stylesheet" href="/static/Semantic/Word2Vec/W2V.css">
 </head>
 <body>
 <!----------------------------------------------------------Header-------------------------------------------------------------->
@@ -28,13 +28,14 @@
                             <li><a href="/GED">Graph Edit Distance</a></li>
                             <li><a href="/Jaccard">Jaccard</a></li>
                         </ul>
-                        <li class="item-2">
-                            <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
-                            <ul class="sub-menu-2">
-                                <li><a href="/word2vec">Word2Vec</a></li>
-                                <li><a href="/LSA">Latent Semantic Analysis</a></li>
-                            </ul>
-                        </li>
+                    </li>
+                    <li class="item-2">
+                        <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
+                        <ul class="sub-menu-2">
+                            <li><a href="/word2vec">Word2Vec</a></li>
+                            <li><a href="/LSA">Latent Semantic Analysis</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -45,14 +46,13 @@
         <div class="banner">
             <div class="algo-banner">
                 <div class="algo-img">
-                    <img src="/static/images/tfidf.jpg" alt="TF-IDF-image" />
+                    <img src="/static/images/w2v.png" alt="LSA-image" />
                 </div>
                 <div class="algo-text">
-                    <h2>Term Frequency-Inverse Document Frequency (TF-IDF)</h2>
+                    <h2>Word2Vec</h2>
                     <p>
                         <span>
-                            A numerical statistic used in information retrieval and text mining to measure the importance of a term within a document or a collection of documents. 
-                            It aims to reflect how relevant a term is to a specific document in a larger corpus.
+                            A technique in natural language processing to represent words in vector form. It captures the semantic meanings of words by learning from large amounts of text data.
                         </span>
                     </p>
                 </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <form id="compare-form" class="compare-form" action="/compare_tfidf" method="post" enctype="multipart/form-data">
+    <form id="compare-form" class="compare-form" action="/compare_word2vec" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <div class="input-doc1">
                 <div class="input-header">
@@ -120,7 +120,7 @@
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
       
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/compare_tfidf', true);
+          xhr.open('POST', '/compare_word2vec', true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       
           xhr.onreadystatechange = function() {
