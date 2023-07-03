@@ -36,26 +36,15 @@ async def compare_texts_bow(doc1: str = Form(...), doc2: str = Form(...)) -> dic
     return {"similarity": round(similarity, 4)}
 
 def tfidf_similarity(text1, text2):
-    # Khởi tạo corpus
-    with open("TF_IDF/corpus.txt", "r") as file:
+    with open("TF_IDF/corpus.txt", "r", encoding='utf-8') as file:
         lines = file.readlines()
 
     corpus = [line.strip() for line in lines]
-
-    # Thêm hai văn bản đã xử lý vào tập dữ liệu corpus
     corpus.append(text1)
     corpus.append(text2)
-
-    # Sử dụng TF-IDF Vectorizer để chuyển đổi văn bản thành ma trận TF-IDF
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(stop_words='english', smooth_idf=True)
     tfidf_matrix = vectorizer.fit_transform(corpus)
-
-    # Tính độ tương đồng cosine giữa hai văn bản đã tiền xử lý
     cosine_sim = cosine_similarity(tfidf_matrix[-2], tfidf_matrix[-1])[0][0]
-    
-    # Xóa hai văn bản đã thêm vào tập dữ liệu corpus
-    corpus.pop()
-    corpus.pop()
     return cosine_sim
 
 @app.get("/TFIDF", response_class=HTMLResponse)
@@ -70,27 +59,17 @@ async def compare_texts_tfidf(doc1: str = Form(...), doc2: str = Form(...)) -> d
     return {"similarity": round(similarity, 4)}
 
 def lsa_similarity(text1, text2):
-    # Khởi tạo corpus
-    with open("TF_IDF/corpus.txt", "r") as file:
+    with open("TF_IDF/corpus.txt", "r", encoding='utf-8') as file:
         lines = file.readlines()
-
     corpus = [line.strip() for line in lines]
-
-    # Thêm hai văn bản đã xử lý vào tập dữ liệu corpus
     corpus.append(text1)
     corpus.append(text2)  
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(stop_words='english', smooth_idf=True)
     vectorized_corpus = vectorizer.fit_transform(corpus)
-
-    # Apply SVD
-    lsa = TruncatedSVD()
+    lsa = TruncatedSVD(n_components=100)  
     lsa_corpus = lsa.fit_transform(vectorized_corpus)
-
-    # Use cosine similarity on the LSA-transformed vectors
     similarity_matrix = cosine_similarity(lsa_corpus)
-    similarity = similarity_matrix[0, 1]
-    corpus.pop()
-    corpus.pop()
+    similarity = similarity_matrix[-1, -2]  
     return similarity
 
 @app.get("/LSA", response_class=HTMLResponse)
@@ -103,6 +82,7 @@ async def compare_form_lsa():
 async def compare_texts_lsa(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
     similarity = lsa_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
+
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="127.0.0.1", port=3000, reload=True)
