@@ -50,9 +50,15 @@ h1{
 } 
 
 .menu > ul > li {
+<<<<<<< HEAD
     position:relative;
     float: left;
     display:inline-block;
+=======
+    /* float: left; */
+    display:inline-block;
+    position:relative;
+>>>>>>> 303078a8b32db5c4ef96903f0a1fa9bf0e7c6572
     font-size:17px;
 }
 
@@ -184,6 +190,7 @@ h1{
 
 .body-container{
     display: flex;
+<<<<<<< HEAD
     margin-right: 0px;
 }
 
@@ -200,17 +207,42 @@ h1{
 .body-container-img1{
     position: relative;
     margin-top: 80px;
+=======
+}
+
+.body-container-img2{
+    margin-top: 100px;
+    margin-left: 30px;
+}
+
+.body-container-img2 img{
+    width: 550px;
+    height: 550px;
+}
+
+.body-container-img1{
+    margin-top: 80px;
+    float: right;
+    margin-left: -300px;
+>>>>>>> 303078a8b32db5c4ef96903f0a1fa9bf0e7c6572
 }
 
 .body-container-img1 img{
     width: 600px;
     height: 500px;
+<<<<<<< HEAD
     border-radius: 5% ;
+=======
+    border-radius: 5% 0  0 5%;
+>>>>>>> 303078a8b32db5c4ef96903f0a1fa9bf0e7c6572
     z-index: -1;
     position:relative;
 }
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 303078a8b32db5c4ef96903f0a1fa9bf0e7c6572
