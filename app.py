@@ -16,7 +16,7 @@ from sklearn.preprocessing import Normalizer
 nlp = spacy.load('en_core_web_sm')
 app = FastAPI()
 app.mount("/static", StaticFiles(directory=r"C:\Users\NHAN\OneDrive - Trường ĐH CNTT - University of Information Technology\UIT-Semester 4\05. Multimedia\Document_Similarity_Checker\static"), name="static")
-#word2vec = KeyedVectors.load_word2vec_format(r'D:/UIT/Năm 2/Kỳ 4/Tính toán đa phương tiện/Document similarity/Doc2Vec/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True)
+word2vec = KeyedVectors.load_word2vec_format(r'D:/UIT/Năm 2/Kỳ 4/Tính toán đa phương tiện/Document similarity/Doc2Vec/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True)
 
 @app.get("/", response_class=HTMLResponse)
 async def index():
@@ -24,8 +24,16 @@ async def index():
             content = f.read()
         return content
 
-def bow_similarity(text1, text2):
+def bow_similarity(text1, text2,n_gram = 1):
     corpus = [text1, text2]
+    if n_gram > 1:
+        # Tạo danh sách các n-gram cho cả hai đoạn văn bản
+        ngrams_corpus = []
+        for doc in corpus:
+            grams = [' '.join(gram) for gram in ngrams(doc.split(), n_gram)]
+            ngrams_corpus.append(' '.join(grams))
+        corpus = ngrams_corpus
+
     vectorizer = CountVectorizer()
     vectorized_corpus = vectorizer.fit_transform(corpus)
     similarity_matrix = cosine_similarity(vectorized_corpus)
@@ -91,15 +99,15 @@ async def compare_texts_lsa(doc1: str = Form(...), doc2: str = Form(...)) -> dic
     similarity = lsa_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
 
-# def word2vec_similarity(text1, text2):
-#     text1 = nlp(text1.lower())
-#     text2 = nlp(text2.lower())
-#     text1 = [token.lemma_ for token in text1 if not token.is_stop and not token.is_punct]
-#     text2 = [token.lemma_ for token in text2 if not token.is_stop and not token.is_punct]
-#     vector1 = np.mean([word2vec[word] for word in text1 if word in word2vec.key_to_index], axis=0)
-#     vector2 = np.mean([word2vec[word] for word in text2 if word in word2vec.key_to_index], axis=0)
-#     cosine_similarity_value = cosine_similarity(vector1.reshape(1, -1), vector2.reshape(1, -1))[0][0]
-#     return float(cosine_similarity_value)
+def word2vec_similarity(text1, text2):
+    text1 = nlp(text1.lower())
+    text2 = nlp(text2.lower())
+    text1 = [token.lemma_ for token in text1 if not token.is_stop and not token.is_punct]
+    text2 = [token.lemma_ for token in text2 if not token.is_stop and not token.is_punct]
+    vector1 = np.mean([word2vec[word] for word in text1 if word in word2vec.key_to_index], axis=0)
+    vector2 = np.mean([word2vec[word] for word in text2 if word in word2vec.key_to_index], axis=0)
+    cosine_similarity_value = cosine_similarity(vector1.reshape(1, -1), vector2.reshape(1, -1))[0][0]
+    return float(cosine_similarity_value)
 
 @app.get("/word2vec", response_class=HTMLResponse)
 async def compare_form_word2vec():
@@ -107,10 +115,10 @@ async def compare_form_word2vec():
         content = f.read()
     return content
 
-# @app.post("/compare_word2vec")
-# async def compare_texts_word2vec(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
-#     similarity = word2vec_similarity(doc1, doc2)
-#     return {"similarity": round(similarity, 4)}
+@app.post("/compare_word2vec")
+async def compare_texts_word2vec(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
+    similarity = word2vec_similarity(doc1, doc2)
+    return {"similarity": round(similarity, 4)}
 
 def jaccard_similarity(text1,text2):
     set1 = set(text1.split())
@@ -129,6 +137,12 @@ async def compare_form_jaccard():
 async def compare_texts_jaccard(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
     similarity = jaccard_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
+
+@app.get("/GED", response_class=HTMLResponse)
+async def compare_form_jaccard():
+    with open('static/Typeface/GED/GED.html', 'r') as f:
+        content = f.read()
+    return content
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="127.0.0.1", port=3000, reload=True)
