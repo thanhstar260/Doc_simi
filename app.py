@@ -12,11 +12,12 @@ import spacy
 import numpy as np
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
+from nltk import ngrams
 
 nlp = spacy.load('en_core_web_sm')
 app = FastAPI()
-app.mount("/static", StaticFiles(directory=r"C:\Users\NHAN\OneDrive - Trường ĐH CNTT - University of Information Technology\UIT-Semester 4\05. Multimedia\Document_Similarity_Checker\static"), name="static")
-word2vec = KeyedVectors.load_word2vec_format(r'D:/UIT/Năm 2/Kỳ 4/Tính toán đa phương tiện/Document similarity/Doc2Vec/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True)
+app.mount("/static", StaticFiles(directory=r"static"), name="static")
+word2vec = KeyedVectors.load_word2vec_format(r'Doc2Vec/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True)
 
 @app.get("/", response_class=HTMLResponse)
 async def index():
@@ -99,13 +100,14 @@ async def compare_texts_lsa(doc1: str = Form(...), doc2: str = Form(...)) -> dic
     similarity = lsa_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
 
+oov_vector = np.zeros((300,))
 def word2vec_similarity(text1, text2):
     text1 = nlp(text1.lower())
     text2 = nlp(text2.lower())
     text1 = [token.lemma_ for token in text1 if not token.is_stop and not token.is_punct]
     text2 = [token.lemma_ for token in text2 if not token.is_stop and not token.is_punct]
-    vector1 = np.mean([word2vec[word] for word in text1 if word in word2vec.key_to_index], axis=0)
-    vector2 = np.mean([word2vec[word] for word in text2 if word in word2vec.key_to_index], axis=0)
+    vector1 = np.mean([word2vec[word] if word in word2vec.key_to_index else oov_vector for word in text1], axis=0)
+    vector2 = np.mean([word2vec[word] if word in word2vec.key_to_index else oov_vector for word in text2], axis=0)
     cosine_similarity_value = cosine_similarity(vector1.reshape(1, -1), vector2.reshape(1, -1))[0][0]
     return float(cosine_similarity_value)
 
