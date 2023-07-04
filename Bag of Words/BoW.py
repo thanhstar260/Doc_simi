@@ -24,16 +24,43 @@ def preprocess_text(text):
     return text
 
 
-def calculate_similarity(text1, text2):
+def calculate_ngram(text, n):
+    words = text.split()  # Tách câu thành các từ
+
+    # Tạo danh sách các n-gram
+    ngrams = []
+    for i in range(len(words) - n + 1):
+        ngram = " ".join(words[i:i + n])
+        ngrams.append(ngram)
+
+    return ngrams
+
+def calculate_ngram(text, n):
+    words = text.split()  # Tách câu thành các từ
+
+    # Tạo danh sách các n-gram
+    ngrams = []
+    for i in range(len(words) - n + 1):
+        ngram = " ".join(words[i:i + n])
+        ngrams.append(ngram)
+
+    return ngrams
+
+### DÙNG HÀM NÀY ĐỂ TÍNH
+def calculate_similarity(text1, text2,n_gram = 1):
     # Xử lý văn bản và tạo tập từ vựng
     text1 = preprocess_text(text1)
     text2 = preprocess_text(text2)
     corpus = [text1, text2]
-    vocabulary = set()
-    for document in corpus:
-        vocabulary.update(document.split())
-    vocabulary = sorted(vocabulary)
-
+    if n_gram == 1 :
+        vocabulary = set()
+        for document in corpus:
+            vocabulary.update(document.split())
+        vocabulary = sorted(vocabulary)
+    else:
+        n_gram1 = calculate_ngram(text1,n_gram)
+        n_gram2 = calculate_ngram(text2,n_gram)
+        vocabulary = set(n_gram1 + n_gram2)
     # Tính vector BoW cho từng văn bản
     vector1 = calculate_bow(text1, vocabulary)
     vector2 = calculate_bow(text2, vocabulary)
@@ -42,19 +69,19 @@ def calculate_similarity(text1, text2):
     return cosine_sim
 
 
-def BoW(sentence1, sentence2):
+# def BoW(sentence1, sentence2):
 
-    words2 = preprocess_text(sentence2)
-    words1 = preprocess_text(sentence1)
+#     words2 = preprocess_text(sentence2)
+#     words1 = preprocess_text(sentence1)
 
-    all_words = set(words1).union(set(words2))
-    c1 = Counter(words1)
-    c2 = Counter(words2)
-    bow1 = {word: c1[word] for word in all_words}
-    bow2 = {word: c2[word] for word in all_words}
-    vector1 = np.array([bow1[word] if word in words1 else 0 for word in all_words])
-    vector2 = np.array([bow2[word] if word in words2 else 0 for word in all_words])
-    return vector1, vector2
+#     all_words = set(words1).union(set(words2))
+#     c1 = Counter(words1)
+#     c2 = Counter(words2)
+#     bow1 = {word: c1[word] for word in all_words}
+#     bow2 = {word: c2[word] for word in all_words}
+#     vector1 = np.array([bow1[word] if word in words1 else 0 for word in all_words])
+#     vector2 = np.array([bow2[word] if word in words2 else 0 for word in all_words])
+#     return vector1, vector2
 
 
 def cosine_similarity(v1, v2):
@@ -63,39 +90,6 @@ def cosine_similarity(v1, v2):
     norm_v2 = np.linalg.norm(v2)
     return dot_product / (norm_v1 * norm_v2)
 
-
-def BoW_levin_jaccard_cosine_similarity(text1, text2, measure):
-    vector1, vector2 = BoW(text1, text2)
-    words1 = text1.lower().split()
-    words2 = text2.lower().split()
-    similarity_cosine = cosine_similarity(vector1, vector2)
-    return similarity_cosine
-def levenshtein_distance(str1, str2):
-    m = len(str1)
-    n = len(str2)
-    d = [[0] * (n + 1) for _ in range(m + 1)]
-    for i in range(m + 1):
-        d[i][0] = i
-    for j in range(n + 1):
-        d[0][j] = j
-
-    for j in range(1, n + 1):
-        for i in range(1, m + 1):
-            if str1[i - 1] == str2[j - 1]:
-                d[i][j] = d[i - 1][j - 1]
-            else:
-                d[i][j] = 1 + min(d[i][j - 1],      # Insert
-                                  d[i - 1][j],      # Delete
-                                  d[i - 1][j - 1])  # Replace
-    return d[m][n]
-
-
-def preprocess_text(text):
-    text = text.lower()  # Chuyển thành chữ thường
-    text = re.sub('[' + string.punctuation + ']', '', text)  # Loại bỏ dấu câu
-    text = ' '.join(text.split()) # Xóa dấu " " dư thừa
-    # text = text.split()
-    return text
 
 def calculate_similarity(text1, text2):
 

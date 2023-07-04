@@ -340,3 +340,7 @@ textarea{
 a.logo{
     text-decoration: none !important;
 }
+
+.algo-img img{
+    width: 100px;
+}
