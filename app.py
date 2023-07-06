@@ -146,5 +146,34 @@ async def compare_form_jaccard():
         content = f.read()
     return content
 
+
+def ngram_similarity(text1, text2,n_gram = 3):
+    corpus = [text1, text2]
+    if n_gram > 1:
+        # Tạo danh sách các n-gram cho cả hai đoạn văn bản
+        ngrams_corpus = []
+        for doc in corpus:
+            grams = [' '.join(gram) for gram in ngrams(doc.split(), n_gram)]
+            ngrams_corpus.append(' '.join(grams))
+        corpus = ngrams_corpus
+
+    vectorizer = CountVectorizer()
+    vectorized_corpus = vectorizer.fit_transform(corpus)
+    similarity_matrix = cosine_similarity(vectorized_corpus)
+    similarity = similarity_matrix[0, 1]
+    return similarity
+
+@app.get("/ngram", response_class=HTMLResponse)
+async def compare_form_bow():
+    with open('static/Typeface/Ngrams/Ngrams.html', 'r') as f:
+        content = f.read()
+    return content
+
+@app.post("/compare_ngram")
+async def compare_texts_ngram(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
+    similarity = ngram_similarity(doc1, doc2)
+    return {"similarity": round(similarity, 4)}
+
+
 if __name__ == "__main__":
     uvicorn.run("app:app", host="127.0.0.1", port=3000, reload=True)
