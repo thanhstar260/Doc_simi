@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaccard</title>
-    <link rel="stylesheet" href="/static/Typeface/Jaccard/Jaccard.css">
+    <title>N-gram</title>
+    <link rel="stylesheet" href="/static/Typeface/Ngrams/Ngrams.css">
 </head>
 <body>
 <!----------------------------------------------------------Header-------------------------------------------------------------->
@@ -26,8 +26,8 @@
                             <li><a href="/BOW">Bag of Word</a></li>
                             <li><a href="/TFIDF">TF-IDF</a></li>
                             <li><a href="/GED">Graph Edit Distance</a></li>
-                            <li class="box"><a href="/BOW"><span>Jaccard</span></a></li>
-                            <li><a href="/ngram">N-gram</a></li>
+                            <li><a href="/Jaccard">Jaccard</a></li>
+                            <li class="box"><a href="/ngram"><span>N-gram</span></a></li>
                         </ul>
                         <li class="item-2">
                             <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
@@ -46,13 +46,13 @@
         <div class="banner">
             <div class="algo-banner">
                 <div class="algo-img">
-                    <img src="/static/images/jaccard.png" alt="Jaccard-image" />
+                    <img src="/static/images/ngram.png" alt="TF-IDF-image" />
                 </div>
                 <div class="algo-text">
-                    <h2>Jaccard Similarity</h2>
+                    <h2>N-gram</h2>
                     <p>
                         <span>
-                            A statistic used for comparing the similarity and diversity of sample sets. It measures similarity between finite sample sets and is defined as the size of the intersection divided by the size of the union of the sample sets.
+                            N-gram is a concept in natural language processing used to represent a sequence of consecutive words or characters of length n. An n-gram can be a sequence of words or characters in a text, divided into consecutive elements of length n.
                         </span>
                     </p>
                 </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <form id="compare-form" class="compare-form" action="/compare_jaccard" method="post" enctype="multipart/form-data">
+    <form id="compare-form" class="compare-form" action="/compare_ngram" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <div class="input-doc1">
                 <div class="input-header">
@@ -93,6 +93,16 @@
                     <textarea class="input-text" name="doc2"></textarea>
                 </div>
             </div>    
+        </div>
+ 
+        
+        <div class="select-ngram-form"> 
+            <label for="select-ngram">Choose n-gram:</label>
+            <select id="n-gram">
+                <option value="bow">1</option>
+                <option value="bigram">2</option>
+                <option value="trigram">3</option>
+            </select>
         </div>
             
         <div class="submit-button">
@@ -120,7 +130,7 @@
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
       
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/compare_jaccard', true);
+          xhr.open('POST', '/compare_ngram', true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       
           xhr.onreadystatechange = function() {

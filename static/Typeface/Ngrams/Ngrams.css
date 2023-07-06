@@ -33,7 +33,7 @@ header{
     flex-grow: 1;
     padding: 20px;
     margin-right: 20px;
-    background: #FAE5FF;
+    background: #D8F8F9;
 }
 
 .algo-img{
@@ -165,11 +165,10 @@ textarea{
 }
 
 
-
 .submit-btn{
     padding: 15px 20px;
     border:none;
-    background:#FAE5FF;
+    background:#D8F8F9;
     border-radius: 5px;
     color:#000;
     font-size: 15px;
@@ -178,8 +177,8 @@ textarea{
 
 .submit-btn:hover{
     cursor:pointer;
+    background:#000;
     color:#fff;
-    background-color: #000;
     box-shadow: 0px 0px 7px #C4CFD4;
 }
 
@@ -221,7 +220,7 @@ textarea{
     color:#0AA3A8;
     font-size: 15px;
     font-weight:500;
-
+    border-bottom: 3px solid #0AA3A8;
 }
 
 .link-item-1{
@@ -276,7 +275,6 @@ textarea{
     color:#842D95;
     font-size: 15px;
     font-weight:500;
-    border-bottom: 3px solid #842D95;
 }
 
 .link-item-2{
@@ -342,12 +340,33 @@ textarea{
 
 a.logo{
     text-decoration: none !important;
+
 }
 
 .box{
-    background-color: #842D95;
+    background-color: #0AA3A8;
 }
 
 .box span{
     color: #fff;
+}
+
+
+.select-ngram-form {
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding-top: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+#n-gram {
+    width: 50px;
+    height: 25px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
 }

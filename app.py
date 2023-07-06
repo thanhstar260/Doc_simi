@@ -100,13 +100,14 @@ async def compare_texts_lsa(doc1: str = Form(...), doc2: str = Form(...)) -> dic
     similarity = lsa_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
 
+# oov_vector = np.zeros((300,))
 # def word2vec_similarity(text1, text2):
 #     text1 = nlp(text1.lower())
 #     text2 = nlp(text2.lower())
 #     text1 = [token.lemma_ for token in text1 if not token.is_stop and not token.is_punct]
 #     text2 = [token.lemma_ for token in text2 if not token.is_stop and not token.is_punct]
-#     vector1 = np.mean([word2vec[word] for word in text1 if word in word2vec.key_to_index], axis=0)
-#     vector2 = np.mean([word2vec[word] for word in text2 if word in word2vec.key_to_index], axis=0)
+#     vector1 = np.mean([word2vec[word] if word in word2vec.key_to_index else oov_vector for word in text1], axis=0)
+#     vector2 = np.mean([word2vec[word] if word in word2vec.key_to_index else oov_vector for word in text2], axis=0)
 #     cosine_similarity_value = cosine_similarity(vector1.reshape(1, -1), vector2.reshape(1, -1))[0][0]
 #     return float(cosine_similarity_value)
 
@@ -144,6 +145,35 @@ async def compare_form_jaccard():
     with open('static/Typeface/GED/GED.html', 'r') as f:
         content = f.read()
     return content
+
+
+def ngram_similarity(text1, text2,n_gram = 3):
+    corpus = [text1, text2]
+    if n_gram > 1:
+        # Tạo danh sách các n-gram cho cả hai đoạn văn bản
+        ngrams_corpus = []
+        for doc in corpus:
+            grams = [' '.join(gram) for gram in ngrams(doc.split(), n_gram)]
+            ngrams_corpus.append(' '.join(grams))
+        corpus = ngrams_corpus
+
+    vectorizer = CountVectorizer()
+    vectorized_corpus = vectorizer.fit_transform(corpus)
+    similarity_matrix = cosine_similarity(vectorized_corpus)
+    similarity = similarity_matrix[0, 1]
+    return similarity
+
+@app.get("/ngram", response_class=HTMLResponse)
+async def compare_form_bow():
+    with open('static/Typeface/Ngrams/Ngrams.html', 'r') as f:
+        content = f.read()
+    return content
+
+@app.post("/compare_ngram")
+async def compare_texts_ngram(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
+    similarity = ngram_similarity(doc1, doc2)
+    return {"similarity": round(similarity, 4)}
+
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="127.0.0.1", port=3000, reload=True)
