@@ -24,10 +24,10 @@
                         <a href="#" class="link-item-1">Typeface Similarity<span class="arrow">&#9660;</span></a>
                         <ul class="sub-menu-1">
                             <li><a href="/BOW">Bag of Word</a></li>
+                            <li><a href="/ngram">N-gram</a></li>
                             <li><a href="/TFIDF">TF-IDF</a></li>
                             <li><a href="/GED">Graph Edit Distance</a></li>
                             <li><a href="/Jaccard">Jaccard</a></li>
-                            <li><a href="/ngram">N-gram</a></li>
                         </ul>
                     </li>
                     <li class="item-2">
@@ -95,6 +95,11 @@
                 </div>
             </div>    
         </div>
+
+        <div class="svd-input-form">
+            <label for="num-svd-components">Number of components:</label>
+            <input type="number" id="num-svd-components" name="num_svd_components" min="1" max="500" step="1" value="2">
+        </div>
             
         <div class="submit-button">
             <button type="submit" name="Compare" class="submit-btn">
@@ -119,6 +124,7 @@
       
           var doc1 = document.querySelector('textarea[name="doc1"]').value;
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
+          var num_svd_components = document.querySelector('input[name="num_svd_components"]').value; //Changed here
       
           var xhr = new XMLHttpRequest();
           xhr.open('POST', '/compare_lsa', true);
@@ -133,10 +139,10 @@
             }
           };
       
-          var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2);
+          var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2) + '&num_svd_components=' + encodeURIComponent(num_svd_components);
           xhr.send(data);
         });
-      </script>
+    </script>
       
 </body>
 </html>

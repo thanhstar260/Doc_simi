@@ -75,7 +75,7 @@ async def compare_texts_tfidf(doc1: str = Form(...), doc2: str = Form(...)) -> d
     similarity = tfidf_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
 
-def lsa_similarity(text1, text2):
+def lsa_similarity(text1, text2, num_svd_components):
     with open("TF_IDF/corpus.txt", "r", encoding='utf-8') as file:
         lines = file.readlines()
     corpus = [line.strip() for line in lines]
@@ -83,7 +83,7 @@ def lsa_similarity(text1, text2):
     corpus.append(text2)
     vectorizer = TfidfVectorizer(stop_words='english', smooth_idf=True)
     tfidf = vectorizer.fit_transform(corpus)
-    svd = TruncatedSVD(70)
+    svd = TruncatedSVD(num_svd_components)
     lsa = make_pipeline(svd, Normalizer(copy=False, norm='l2'))
     tfidf_lsa = lsa.fit_transform(tfidf)
     similarity = cosine_similarity(tfidf_lsa[-2].reshape(1, -1), tfidf_lsa[-1].reshape(1, -1))
@@ -96,8 +96,8 @@ async def compare_form_lsa():
     return content
 
 @app.post("/compare_lsa")
-async def compare_texts_lsa(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
-    similarity = lsa_similarity(doc1, doc2)
+async def compare_texts_lsa(doc1: str = Form(...), doc2: str = Form(...), num_svd_components: int = Form(...)) -> dict:
+    similarity = lsa_similarity(doc1, doc2, num_svd_components)
     return {"similarity": round(similarity, 4)}
 
 oov_vector = np.zeros((300,))
