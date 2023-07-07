@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TF-IDF</title>
-    <link rel="stylesheet" href="/static/Typeface/TF-IDF/TF-IDF.css">
+    <title>SynSets</title>
+    <link rel="stylesheet" href="/static/Semantic/Word2Vec/W2V.css">
 </head>
 <body>
 <!----------------------------------------------------------Header-------------------------------------------------------------->
@@ -25,19 +25,19 @@
                         <ul class="sub-menu-1">
                             <li><a href="/BOW">Bag of Word</a></li>
                             <li><a href="/ngram">N-gram</a></li>
-                            <li class="box"><a href="/BOW"><span>TF-IDF</span></a></li>
+                            <li><a href="/TFIDF">TF-IDF</a></li>
                             <li><a href="/GED">Graph Edit Distance</a></li>
                             <li><a href="/Jaccard">Jaccard</a></li>
-
                         </ul>
-                        <li class="item-2">
-                            <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
-                            <ul class="sub-menu-2">
-                                <li><a href="/word2vec">Word2Vec</a></li>
-                                <li><a href="/LSA">Latent Semantic Analysis</a></li>
-                                <li><a href="/synset">SynSets</a></li>
-                            </ul>
-                        </li>
+                    </li>
+                    <li class="item-2">
+                        <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
+                        <ul class="sub-menu-2">
+                            <li><a href="/word2vec">Word2Vec</a></li>
+                            <li><a href="/LSA">Latent Semantic Analysis</a></li>
+                            <li class="box"><a href="/synset"><span>SynSets</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -48,17 +48,16 @@
         <div class="banner">
             <div class="algo-banner">
                 <div class="algo-img">
-                    <img src="/static/images/TF-IDF.png" alt="TF-IDF-image" />
+                    <img src="/static/images/synset.png" alt="LSA-image" />
                 </div>
                 <div class="algo-text">
-                    <h2>Term Frequency-Inverse Document Frequency (TF-IDF)</h2>
+                    <h2>Synsets</h2>
                     <p>
                         <span>
-                            A numerical statistic used in information retrieval and text mining to measure the importance of a term within a document or a collection of documents. 
-                            It aims to reflect how relevant a term is to a specific document in a larger corpus.
+                            A method for determining semantic similarity using WordNet, an extensive lexical database of English. It connects words based on semantic relationships, creating sets of cognitive synonyms or 'synsets'.
                         </span>
                     </p>
-                </div>
+                </div>                
             </div>
 
             <div class="text-banner">
@@ -73,7 +72,7 @@
         </div>
     </div>
 
-    <form id="compare-form" class="compare-form" action="/compare_tfidf" method="post" enctype="multipart/form-data">
+    <form id="compare-form" class="compare-form" action="/compare_synset" method="post" enctype="multipart/form-data">
         <div class="input-form">
             <div class="input-doc1">
                 <div class="input-header">
@@ -123,7 +122,7 @@
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
       
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/compare_tfidf', true);
+          xhr.open('POST', '/compare_synset', true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       
           xhr.onreadystatechange = function() {

@@ -1,4 +1,7 @@
-@app.post("/compare_word2vec")
-# async def compare_texts_word2vec(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
-#     similarity = word2vec_similarity(doc1, doc2)
-#     return {"similarity": round(similarity, 4)}
+from fastapi import FastAPI, Form
+from nltk.corpus import wordnet as wn
+from nltk import pos_tag, word_tokenize
+import nltk
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
+nltk.download('wordnet')

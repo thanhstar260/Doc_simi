@@ -13,6 +13,10 @@ import numpy as np
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
 from nltk import ngrams
+from fastapi import FastAPI, Form
+from nltk.corpus import wordnet as wn
+from nltk import pos_tag, word_tokenize
+import nltk
 
 nlp = spacy.load('en_core_web_sm')
 app = FastAPI()
@@ -172,6 +176,49 @@ async def compare_form_ngram():
 @app.post("/compare_ngram")
 async def compare_texts_ngram(doc1: str = Form(...), doc2: str = Form(...), n_gram: int = Form(...)) -> dict: 
     similarity = ngram_similarity(doc1, doc2, n_gram)
+    return {"similarity": round(similarity, 4)}
+
+
+def sys_convert_tag(tag):
+    tag_dict = {'N': 'n', 'J': 'a', 'R': 'r', 'V': 'v'}
+    try:
+        return tag_dict[tag[0]]
+    except KeyError:
+        return None
+
+def doc_to_synsets(doc):
+    tokens = word_tokenize(doc)
+    pos = pos_tag(tokens)
+    tags = [tag[1] for tag in pos]
+    wntag = [sys_convert_tag(tag) for tag in tags]
+    ans = list(zip(tokens,wntag))
+    sets = [wn.synsets(x,y) for x,y in ans]
+    final = [val[0] for val in sets if len(val) > 0]
+    return final
+
+def path_similarity_score(s1, s2):
+    s =[]
+    for i1 in s1:
+        r = []
+        scores = [x for x in [i1.path_similarity(i2) for i2 in s2] if x is not None]
+        if scores:
+            s.append(max(scores))
+    return sum(s)/len(s)
+
+def document_path_similarity(doc1, doc2):
+    synsets1 = doc_to_synsets(doc1)
+    synsets2 = doc_to_synsets(doc2)
+    return (path_similarity_score(synsets1, synsets2) + path_similarity_score(synsets2, synsets1)) / 2
+
+@app.get("/synset", response_class=HTMLResponse)
+async def compare_form_synsets():
+    with open('static/Semantic/SynSet/synset.html', 'r') as f:
+        content = f.read()
+    return content
+
+@app.post("/compare_synset")
+async def compare_texts_synsets(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
+    similarity = document_path_similarity(doc1, doc2)
     return {"similarity": round(similarity, 4)}
 
 
