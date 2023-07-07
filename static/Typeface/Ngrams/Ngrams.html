@@ -27,7 +27,7 @@
                             <li><a href="/TFIDF">TF-IDF</a></li>
                             <li><a href="/GED">Graph Edit Distance</a></li>
                             <li><a href="/Jaccard">Jaccard</a></li>
-                            <li class="box"><a href="/Ngram"><span>N-gram</span></a></li>
+                            <li class="box"><a href="/ngram"><span>N-gram</span></a></li>
                         </ul>
                         <li class="item-2">
                             <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
@@ -94,6 +94,22 @@
                 </div>
             </div>    
         </div>
+ 
+        
+        <div class="select-ngram-form"> 
+            <label for="n_gram">Choose n-gram:</label>
+            <select name="n_gram" id="n-gram">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+        </div>
             
         <div class="submit-button">
             <button type="submit" name="Compare" class="submit-btn">
@@ -118,6 +134,7 @@
       
           var doc1 = document.querySelector('textarea[name="doc1"]').value;
           var doc2 = document.querySelector('textarea[name="doc2"]').value;
+          var n_gram = document.querySelector('select[name="n_gram"]').value; //Changed here
       
           var xhr = new XMLHttpRequest();
           xhr.open('POST', '/compare_ngram', true);
@@ -126,16 +143,15 @@
           xhr.onreadystatechange = function() {
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
               var similarity = JSON.parse(this.responseText).similarity;
-              // Update the similarity result text on the page
               document.getElementById('similarity-result').innerText = 'Similarity: ' + similarity.toFixed(4);
               document.getElementById('similarity-result').style.display = 'block'; 
             }
           };
       
-          var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2);
+          var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2) + '&n_gram=' + encodeURIComponent(n_gram);
           xhr.send(data);
         });
-      </script>
+    </script>
       
 </body>
 </html>

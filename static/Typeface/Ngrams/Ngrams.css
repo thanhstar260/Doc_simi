@@ -165,7 +165,6 @@ textarea{
 }
 
 
-
 .submit-btn{
     padding: 15px 20px;
     border:none;
@@ -350,4 +349,24 @@ a.logo{
 
 .box span{
     color: #fff;
+}
+
+
+.select-ngram-form {
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding-top: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+#n-gram {
+    width: 50px;
+    height: 25px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
 }

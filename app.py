@@ -147,10 +147,10 @@ async def compare_form_jaccard():
     return content
 
 
-def ngram_similarity(text1, text2,n_gram = 3):
+def ngram_similarity(text1, text2, n_gram):
     corpus = [text1, text2]
     if n_gram > 1:
-        # Tạo danh sách các n-gram cho cả hai đoạn văn bản
+        # Generate n-grams for both texts
         ngrams_corpus = []
         for doc in corpus:
             grams = [' '.join(gram) for gram in ngrams(doc.split(), n_gram)]
@@ -164,14 +164,14 @@ def ngram_similarity(text1, text2,n_gram = 3):
     return similarity
 
 @app.get("/ngram", response_class=HTMLResponse)
-async def compare_form_bow():
+async def compare_form_ngram():
     with open('static/Typeface/Ngrams/Ngrams.html', 'r') as f:
         content = f.read()
     return content
 
 @app.post("/compare_ngram")
-async def compare_texts_ngram(doc1: str = Form(...), doc2: str = Form(...)) -> dict:
-    similarity = ngram_similarity(doc1, doc2)
+async def compare_texts_ngram(doc1: str = Form(...), doc2: str = Form(...), n_gram: int = Form(...)) -> dict: 
+    similarity = ngram_similarity(doc1, doc2, n_gram)
     return {"similarity": round(similarity, 4)}
 
 
