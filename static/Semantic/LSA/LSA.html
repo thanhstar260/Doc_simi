@@ -1,149 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Latent Semantic Analysis</title>
-    <link rel="stylesheet" href="/static/Semantic/LSA/LSA.css">
-</head>
-<body>
-<!----------------------------------------------------------Header-------------------------------------------------------------->
-    <header>
-        <a href="/" class="logo">
-            <div class="logo-img">
-                <img src="/static/images/logo.svg" alt="logo image" />
-            </div>
-            <div class="logo-text">
-                <span class="primary-text">Doc</span>Simi
-            </div>
-        </a>
-        <div class="navbar-container">
-            <nav class="menu">
-                <ul class="clearfix">
-                    <li class="item-1">
-                        <a href="#" class="link-item-1">Syntactic Similarity<span class="arrow">&#9660;</span></a>
-                        <ul class="sub-menu-1">
-                            <li><a href="/BOW">Bag of Word</a></li>
-                            <li><a href="/ngram">N-gram</a></li>
-                            <li><a href="/TFIDF">TF-IDF</a></li>
-                            <li><a href="/GED">Graph Edit Distance</a></li>
-                            <li><a href="/Jaccard">Jaccard</a></li>
-                        </ul>
-                    </li>
-                    <li class="item-2">
-                        <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
-                        <ul class="sub-menu-2">
-                            <li><a href="/word2vec">Word2Vec</a></li>
-                            <li class="box"><a href="/BOW"><span>Latent Semantic Analysis</span></a></li>
-                            <li><a href="/synset">SynSets</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <link rel="stylesheet" href="../.././static/main/main.css" />
+  </head>
+  <body>
+    <!----------------------------------------------------------Header-------------------------------------------------------------->
+    <header class="navbar">
+      <!-- Hamburger menu -->
+      <nav class="navbar__menu">
+        <a href="/" class="logo">DocSimi</a>
+        <ul class="navbar__list grid">
+          <li class="navbar__item">
+            <p>Syntactic Similarity<span class="navbar__arrow">&#9660;</span></p>
+            <ul class="navbar__submenu">
+              <li><a href="/BOW">Bag of Word</a></li>
+              <li><a href="/GED">Graph Edit Distance</a></li>
+              <li><a href="/Jaccard">Jaccard</a></li>
+              <li><a href="/ngram">Ngrams</a></li>
+              <li><a href="/TFIDF">TF-IDF</a></li>
+            </ul>
+          </li>
+          <li class="navbar__item">
+            <p>Semantic Similarity<span class="navbar__arrow">&#9660;</span></p>
+            <ul class="navbar__submenu">
+              <li><a href="/word2vec">Word2Vec</a></li>
+              <li><a href="/LSA">Latent Semantic Analysis</a></li>
+              <li><a href="/synset">Synsets</a></li>
+            </ul>
+          </li>
+        </ul>
+        <img src="/static/images/logo_cs.png" style="width: 4.5rem" />
+      </nav>
     </header>
 
-<!----------------------------------------------------------Body-------------------------------------------------------------->
-    <div class="body-container">
-        <div class="banner">
-            <div class="algo-banner">
-                <div class="algo-img">
-                    <img src="/static/images/LSA.png" alt="LSA-image" />
-                </div>
-                <div class="algo-text">
-                    <h2>Latent Semantic Analysis</h2>
-                    <p>
-                        <span>
-                            A technique in natural language processing, in particular in vectorial semantics, of analyzing relationships between a set of documents and the terms they contain by producing a set of concepts related to the documents and terms.
-                        </span>
-                    </p>
-                </div>
-            </div>
-
-            <div class="text-banner">
-                <h2>Document Similarity</h2>
-                <p>
-                    <span>
-                        DocSimi will compare text to find the similarity score between two documents. <br>
-                        Just paste your text and click Compare. 
-                    </span>
-                </p>
-            </div>
-        </div>
+    <!----------------------------------------------------------Body-------------------------------------------------------------->
+    <div class="body grid">
+      <div class="body__header">
+        <h1>Latent Semantic Analysis (LSA)</h1>
+      </div>
+      <div class="body__content">
+        <img src="/static/images/LSA.png" style="height: 400px;"/>
+        <p>
+            Latent Semantic Analysis is a natural language processing method that analyzes relationships between a set of 
+            documents and the terms contained within. It uses singular value decomposition, a mathematical technique, to scan 
+            unstructured data to find hidden relationships between terms and concepts.
+        </p>
+      </div>
+      <a href="#main" class="arrow bounce"></a>
     </div>
 
-    <form id="compare-form" class="compare-form" action="/compare_lsa" method="post" enctype="multipart/form-data">
-        <div class="input-form">
-            <div class="input-doc1">
-                <div class="input-header">
-                    <label title="Document 1" for="document1-text" class="input-file-label">
-                        <span>Document 1</span>
-                    </label>  
-                </div>
-                <div class="input-content">
-                    <textarea class="input-text" name="doc1"></textarea>
-                </div>
+    <div class="main__container" id="main">
+      <div class="note">
+        <h2>How to use</h2>
+        <p>
+          DocSimi will compare text to find the similarity score between two
+          documents.
+        </p>
+        <p>Just paste your text and click <b>Compare</b>.</p>
+      </div>
+      <form
+        id="compare-form"
+        class="compare-form"
+        action="/compare_bow"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="input__form">
+          <div class="input__doc">
+            <div class="input__header">
+              <label title="Document 1" for="document1-text">
+                Document 1
+              </label>
             </div>
+            <div class="input__content">
+              <textarea class="input__text" name="doc1"></textarea>
+            </div>
+          </div>
 
-            <div class="input-doc2">
-                <div class="input-header">
-                    <label title="Document 2" for="document2-text" class="input-file-label">
-                        Document 2
-                    </label>  
-                </div>
-                <div class="input-content">
-                    <textarea class="input-text" name="doc2"></textarea>
-                </div>
-            </div>    
+          <div class="input__doc">
+            <div class="input__header">
+              <label title="Document 2" for="document2-text">
+                Document 2
+              </label>
+            </div>
+            <div class="input__content">
+              <textarea class="input__text" name="doc2"></textarea>
+            </div>
+          </div>
         </div>
 
-        <div class="svd-input-form">
-            <label for="num-svd-components">Number of components:</label>
-            <input type="number" id="num-svd-components" name="num_svd_components" min="1" max="500" step="1" value="2">
+        <div class="additional-form">
+          <label for="num-svd-components">Number of components:</label>
+          <input type="number" id="num-svd-components" name="num_svd_components" min="1" max="500" step="1" value="2">
         </div>
-            
+
         <div class="submit-button">
-            <button type="submit" name="Compare" class="submit-btn">
-                Compare
-            </button>
+          <button type="submit" name="Compare" class="submit-btn">
+            Compare
+          </button>
         </div>
-        <div id="similarity-result" style="
-        margin-top: 20px;
-        font-size: 20px;
-        color: #333;
-        padding: 10px;
-        border: 1px solid #ddd;
-        box-shadow: 5px 5px 10px rgba(0,0,0,0.1); 
-        background-color: #f8f9fa; 
-        text-align: center;
-    "></div> 
-    
-    </form>
+        <div id="similarity-result" class="result"></div>
+      </form>
+    </div>
+
     <script>
-        document.getElementById('compare-form').addEventListener('submit', function(event) {
-          event.preventDefault();
-      
-          var doc1 = document.querySelector('textarea[name="doc1"]').value;
-          var doc2 = document.querySelector('textarea[name="doc2"]').value;
-          var num_svd_components = document.querySelector('input[name="num_svd_components"]').value; //Changed here
-      
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/compare_lsa', true);
-          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      
-          xhr.onreadystatechange = function() {
-            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-              var similarity = JSON.parse(this.responseText).similarity;
-              // Update the similarity result text on the page
-              document.getElementById('similarity-result').innerText = 'Similarity: ' + similarity.toFixed(4);
-              document.getElementById('similarity-result').style.display = 'block'; 
-            }
-          };
-      
-          var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2) + '&num_svd_components=' + encodeURIComponent(num_svd_components);
-          xhr.send(data);
-        });
+      document.getElementById('compare-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        var doc1 = document.querySelector('textarea[name="doc1"]').value;
+        var doc2 = document.querySelector('textarea[name="doc2"]').value;
+        var num_svd_components = document.querySelector('input[name="num_svd_components"]').value; //Changed here
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/compare_lsa', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+        xhr.onreadystatechange = function() {
+          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            var similarity = JSON.parse(this.responseText).similarity;
+            // Update the similarity result text on the page
+            document.getElementById('similarity-result').innerText = 'Similarity: ' + similarity.toFixed(4);
+            document.getElementById('similarity-result').style.display = 'block'; 
+          }
+        };
+    
+        var data = 'doc1=' + encodeURIComponent(doc1) + '&doc2=' + encodeURIComponent(doc2) + '&num_svd_components=' + encodeURIComponent(num_svd_components);
+        xhr.send(data);
+      });
     </script>
-      
-</body>
+  </body>
 </html>

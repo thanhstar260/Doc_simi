@@ -5,64 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../.././static/main/main.css">
     <title>DocSimi</title>
-    <style>
-        body {
-          background-image: url("../../static/images/background.jpg");
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-      </style>
 </head>
 <body>
-    <div class="container">
-        <div class="body-container">
-            <div class="body-content">
-                <div class="logo">
-                    <div class="logo-img">
-                        <img src="../../static/images/logo.svg" alt="logo image" />
+    <section class="home container">
+        <div class="home__container grid">
+            <div class="home__content grid">
+                <div class="home__title">
+                    <h1>DocSimi</h1>
+                    <p class="typewritter anim-typewriter">Plagiarize This, If You Can!</p>
+                </div>
+                <div class="home__content">
+                    <div class="home__section">
+                        <div class="section__title">
+                            <h2>Syntactic Similarity &#9889;</h2>
+                        </div>
+                        <div class="cards-list grid">
+                            <a href="/BOW" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/BoW.png" alt="Bag of Words">
+                                </div>
+                                <div class="card__title">
+                                    <h3>Bag of Words (BoW)</h3>
+                                </div>
+                            </a>
+                            <a href="/GED" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/GED.png" alt="GED">
+                                </div>
+                                <div class="card__title">
+                                    <h3>Graph Edit Distance</h3>
+                                </div>
+                            </a>
+                            <a href="/Jaccard" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/jaccard.png" alt="jaccard">
+                                </div>
+                                <div class="card__title">
+                                    <h3>Jaccard</h3>
+                                </div>
+                            </a>
+                            <a href="/ngram" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/typeface.png" alt="Ngrams">
+                                </div>
+                                <div class="card__title">
+                                    <h3>Ngrams</h3>
+                                </div>
+                            </a>
+                            <a href="/TFIDF" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/TF-IDF.png" alt="TF-IDF">
+                                </div>
+                                <div class="card__title">
+                                    <h3>TF-IDF</h3>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="logo-text">
-                        <span class="primary-text">Doc</span>Simi
+                    <div class="home__section">
+                        <div class="section__title">
+                            <h2>Semantic Similarity &#9889;</h2>
+                        </div>
+                        <div class="cards-list grid">
+                            <a href="/LSA" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/LSA.png" alt="Latent Semantic Analysis">
+                                </div>
+                                <div class="card__title">
+                                    <h3>Latent Semantic Analysis</h3>
+                                </div>
+                            </a>
+                            <a href="/word2vec" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/w2v.png" alt="Word2Vec">
+                                </div>
+                                <div class="card__title">
+                                    <h3>Word2Vec</h3>
+                                </div>
+                            </a>
+                            <a href="/synset" class="card">
+                                <div class="card__illustration">
+                                    <img src="../.././static/images/synset.png" alt="SynSets">
+                                </div>
+                                <div class="card__title">
+                                    <h3>SynSets</h3>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="body-container-text">
-                    <div class="text">
-                        <h1>Document <br> Similarity</h1>
-                    </div>
-                    <div class="navbar-container">
-                        <nav class="menu">
-                            <ul class="clearfix">
-                                <li class="item-1">
-                                    <a href="#" class="link-item-1">Typeface Similarity<span class="arrow">&#9660;</span></a>
-                                    <ul class="sub-menu-1">
-                                        <li><a href="/BOW">Bag of Word</a></li>
-                                        <li><a href="/TFIDF">TF-IDF</a></li>
-                                        <li><a href="/GED">Graph Edit Distance</a></li>
-                                        <li><a href="/Jaccard">Jaccard</a></li>
-                                    </ul>
-                                </li>
-                                <li class="item-2">
-                                    <a href="#" class="link-item-2">Semantic Similarity<span class="arrow">&#9660;</span></a>
-                                    <ul class="sub-menu-2">
-                                        <li><a href="/word2vec">Word2Vec</a></li>
-                                        <li><a href="/LSA">Latent Semantic Analysis</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>    
-            </div>
-            
-            <div class="body-container-img2">
-                <img src="../../static/images/document_icon.png" alt="document2 image">
-            </div>
-
-            <div class="body-container-img1">
-                <img src="../../static/images/sub_background.png" alt="document1 image">
             </div>
         </div>
-        
-    </div>
+    </section>
 </body>
 </html>

@@ -17,6 +17,7 @@ from fastapi import FastAPI, Form
 from nltk.corpus import wordnet as wn
 from nltk import pos_tag, word_tokenize
 import nltk
+from sklearn.preprocessing import normalize
 
 nlp = spacy.load('en_core_web_sm')
 app = FastAPI()
@@ -112,7 +113,9 @@ def word2vec_similarity(text1, text2):
     text2 = [token.lemma_ for token in text2 if not token.is_stop and not token.is_punct]
     vector1 = np.mean([word2vec[word] if word in word2vec.key_to_index else oov_vector for word in text1], axis=0)
     vector2 = np.mean([word2vec[word] if word in word2vec.key_to_index else oov_vector for word in text2], axis=0)
-    cosine_similarity_value = cosine_similarity(vector1.reshape(1, -1), vector2.reshape(1, -1))[0][0]
+    vector1 = normalize(vector1.reshape(1, -1), norm='l1')
+    vector2 = normalize(vector2.reshape(1, -1), norm='l1')
+    cosine_similarity_value = cosine_similarity(vector1, vector2)[0][0]
     return float(cosine_similarity_value)
 
 @app.get("/word2vec", response_class=HTMLResponse)
