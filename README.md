@@ -6,17 +6,18 @@ DocSimi is a comprehensive web application built using FastAPI backend that prov
 
 The following similarity techniques are implemented and made available through an easy-to-use interface:
 
-### Typeface Similarity
+### Syntactic Similarity
 
 - Bag of Words
 - TF-IDF (Term Frequency-Inverse Document Frequency)
 - Graph Edit Distance based on Levenshtein
 - Jaccard
-
+- N-grams
 ### Semantic Similarity
 
 - Latent Semantic Analysis (LSA)
 - Word2Vec
+- SynSets
 
 ## Running Locally
 
