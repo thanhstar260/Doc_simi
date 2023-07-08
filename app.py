@@ -206,10 +206,7 @@ def path_similarity_score(s1, s2):
         scores = [x for x in [i1.path_similarity(i2) for i2 in s2] if x is not None]
         if scores:
             s.append(max(scores))
-    if len(s) == 0:
-        return 0 
-    else:
-        return sum(s)/len(s)
+    return sum(s)/len(s)
 
 def document_path_similarity(doc1, doc2):
     synsets1 = doc_to_synsets(doc1)
