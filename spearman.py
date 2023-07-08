@@ -16,6 +16,8 @@ from sklearn.decomposition import TruncatedSVD
 import spacy
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
+import nltk
+from nltk.corpus import wordnet as wn
 
 nlp = spacy.load('en_core_web_sm')
 dataset = load_dataset("stsb_multi_mt", name="en", split="dev")
@@ -49,7 +51,7 @@ scores = array[:,2]
 # @@@ Dưới đây là một số metric để tính similarity, và sau đó tính hệ số tương quan hạng Spearman @@@
 
 '''---------------Word2vec-------------'''
-word2vec = KeyedVectors.load_word2vec_format(r'GoogleNews-vectors-negative300.bin', binary=True)
+word2vec = KeyedVectors.load_word2vec_format(r'Doc2Vec/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True)
 def word2vec_similarity(text1 :str, text2: str) -> float:
     text1 = nlp(text1.lower())
     text2 = nlp(text2.lower())
@@ -61,7 +63,7 @@ def word2vec_similarity(text1 :str, text2: str) -> float:
     return float(cosine_similarity_value)
 
 '''----------------LSA-----------------'''
-with open("corpus.txt", "r", encoding='utf-8') as file:
+with open(r"TF_IDF\corpus.txt", "r", encoding='utf-8') as file:
     lines = file.readlines()
     corpus = [line.strip() for line in lines]
 
@@ -75,6 +77,40 @@ def lsa_similarity(text1 :str, text2 :str) -> float:
     tfidf_lsa = lsa.fit_transform(tfidf)
     similarity = cosine_similarity(tfidf_lsa[-2].reshape(1, -1), tfidf_lsa[-1].reshape(1, -1))
     return abs(similarity[0][0])
+
+def convert_tag(tag):
+    tag_dict = {'N': 'n', 'J': 'a', 'R': 'r', 'V': 'v'}
+    try:
+        return tag_dict[tag[0]]
+    except KeyError:
+        return None
+
+def doc_to_synsets(doc):
+    tokens = nltk.word_tokenize(doc)
+    pos = nltk.pos_tag(tokens)
+    tags = [tag[1] for tag in pos]
+    wntag = [convert_tag(tag) for tag in tags]
+    ans = list(zip(tokens,wntag))
+    sets = [wn.synsets(x,y) for x,y in ans]
+    final = [val[0] for val in sets if len(val) > 0]
+    return final
+
+def similarity_score(s1, s2):
+    s =[]
+    for i1 in s1:
+        r = []
+        scores = [x for x in [i1.path_similarity(i2) for i2 in s2] if x is not None]
+        if scores:
+            s.append(max(scores))
+    if len(s) == 0:
+        return 0  # return a default value when no matches found
+    else:
+        return sum(s)/len(s)
+
+def document_path_similarity(doc1, doc2):
+    synsets1 = doc_to_synsets(doc1)
+    synsets2 = doc_to_synsets(doc2)
+    return (similarity_score(synsets1, synsets2) + similarity_score(synsets2, synsets1)) / 2
 
 '''
 @@@ Hàm tính vector similarity dựa trên ma trận sentence_pairs @@@
@@ -104,8 +140,11 @@ def spearman_rank_correlation(vector1 : np.array, vector2 : np.array) -> float:
 '''Tính toán Spearman correlation giữa word2vec và LSA, correlation càng gần 1 thì metric càng tốt'''
 word2vec = similarity_vector(sentence_pairs,word2vec_similarity)
 lsa      = similarity_vector(sentence_pairs,lsa_similarity)
+synset = similarity_vector(sentence_pairs, document_path_similarity)
+
 print('Spearman between Word2vec and groundtruth: ',spearman_rank_correlation(word2vec,scores))
 print('Spearman between LSA and groundtruth: ',spearman_rank_correlation(lsa,scores))
+print('Spearman between Synset and groundtruth: ', spearman_rank_correlation(synset, scores))
 '''
 Output:
 Spearman between Word2vec and groundtruth:  0.7644742056095604
